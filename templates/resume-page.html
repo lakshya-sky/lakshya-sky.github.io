@@ -1,0 +1,204 @@
+{% extends "resume.html" %}
+
+{% block head %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}'s Resume</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/resume.css">
+{% endblock head%}
+
+{% block content %}
+  <main class="css-be9d8r">
+    <div class="css-1jmx1h9">
+      <div class="css-1qbz534">
+        <div class="css-1bnx3o6"></div>
+        </div>
+      <div class="css-1tcp1k1">
+        <div class="css-1gfkkfz">
+          <header class="header">
+            <h1 class="h1">{{ page.title }}</h1>
+            <div class="bio">
+              <div class="pm-handles">
+                <div class="current-role">Full Stack Developer</div>
+                <!--<div class="current-location">Halifax, CA </div>-->
+                <a href="http://github.com/lakshya-sky" target="_blank" rel="noopener noreferrer nofollow ugc"
+                  class="handle-link">
+                  github.com/lakshya-sky
+                </a>
+                <!-- <div class="handle">maria@email.com</div> -->
+                <!-- <div class="handle">555-555-5555</div> -->
+              </div>
+              <div class="desc"></div>
+            </div>
+          </header>
+          <div class="pdf-page-container page-container">
+            <div class="pdf-page-column page-container" />
+            <section class="section">
+              <div class="section-title">
+                <h2 class="section-heading">Work Experience</h2>
+                <div class="section-border"></div>
+              </div>
+
+              <div class="css-7c5lm2">
+                <div class="css-195lb6z">
+                  <div class="css-14xcb6s">
+                    <h2 class="css-j8uch1">Full Stack Developer</h2>
+                  </div>
+                  <div class="css-1lufzlj">
+                    <div class="css-vurnku">
+                      <h3 class="css-12qfpa0"><a href="https://allnovascotia.com/" target="_blank"
+                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">allNovascotia</a> (Halifax, NS)
+                      </h3>
+                    </div>
+                    <div class="css-1lx4861"><span>Mar 2021 - Current</span></div>
+                  </div>
+                </div>
+                <div>
+                  <ul class="css-1yh09yi">
+                    <li class="css-jo1oik">Reduced peak-time server response by more than 80% by restructuring tables
+                      and improving session logic.</li>
+                    <li class="css-jo1oik">Introduced Credit Card tokenization and migrated code to use tokens instead
+                      of raw credit cards.</li>
+                    <li class="css-jo1oik">Modified Server side session based authentication to in-house JWT based
+                      authentication.</li>
+                    <li class="css-jo1oik">Rewrote Legacy PHP code to NextJS and GraphQL.</li>
+                    <li class="css-jo1oik">Deployed Hashicorp Consul to federate clusters with Mesh Gateway.</li>
+                    <li class="css-jo1oik">Built React Native apps for Android and iOS with team.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="css-7c5lm2">
+                <div class="css-195lb6z">
+                  <div class="css-14xcb6s">
+                    <h2 class="css-j8uch1">Full Stack Developer</h2>
+                  </div>
+                  <div class="css-1lufzlj">
+                    <div class="css-vurnku">
+                      <h3 class="css-12qfpa0"><a href="https://www.yqgtech.com/" target="_blank"
+                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">YQG Technologies Inc</a> (Windsor,
+                        ON)</h3>
+                    </div>
+                    <div class="css-1lx4861"><span>Sept 2020 - Feb 2021</span></div>
+                  </div>
+                </div>
+                <div>
+                  <ul class="css-1yh09yi">
+                    <li class="css-jo1oik">Architected and coded micro-services using AWS Lambda Functions and DynamoDB.
+                    </li>
+                    <li class="css-jo1oik">Integrated AWS Cognito for user-authentication and better user category
+                      management.</li>
+                    <li class="css-jo1oik">Achieved above 90% code coverage for server side functionality using unit
+                      and integration tests.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="css-7c5lm2">
+                <div class="css-195lb6z">
+                  <div class="css-14xcb6s">
+                    <h2 class="css-j8uch1">Software Developer</h2>
+                  </div>
+                  <div class="css-1lufzlj">
+                    <div class="css-vurnku">
+                      <h3 class="css-12qfpa0"><a href="https://www.aarvitechnology.com/" target="_blank"
+                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Aarvi Technology</a> (Surat, India)
+                      </h3>
+                    </div>
+                    <div class="css-1lx4861"><span>June 2018 – July 2019</span></div>
+                  </div>
+                </div>
+                <div>
+                  <ul class="css-1yh09yi">
+                    <li class="css-jo1oik">Developed web and mobile applications for Residency management using
+                    <li class="css-jo1oik">Improved purchase API performance by 5% using response compression and
+                      restructuring database schema.</li>
+                    <li class="css-jo1oik">Actively participated in architecture design and application maintenance.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+            <section class="section">
+              <div class="section-title">
+                <h2 class="section-heading">Education</h2>
+                <div class="section-border"></div>
+              </div>
+              <div class="css-1spxp01">
+                <div class="css-1yh9w9q">
+                  <div class="css-14xcb6s">
+                    <h2 class="css-10yoexo">Master of Applied Computer Science</h2>
+                  </div>
+                  <div class="css-1lufzlj">
+                    <div class="css-vurnku">
+                      <h3 class="css-1fl4a9"><a href="https://www.dal.ca/" target="_blank"
+                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Dalhousie University</a></h3>
+                      <div class="css-1qa1a31"></div>
+                    </div>
+                    <div class="css-1lx4861"><span>Sept 2019 - May 2021</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="css-1spxp01">
+                <div class="css-1yh9w9q">
+                  <div class="css-14xcb6s">
+                    <h2 class="css-10yoexo">B.Tech, Information Technology</h2>
+                  </div>
+                  <div class="css-1lufzlj">
+                    <div class="css-vurnku">
+                      <h3 class="css-1fl4a9"><a href="https://ddu.ac.in/" target="_blank"
+                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Dharmsinh Desai University</a></h3>
+                      <div class="css-1qa1a31"></div>
+                    </div>
+                    <div class="css-1lx4861"><span>Aug 2014 — May 2018</span></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="css-gz6vba">
+              <div class="section-title">
+                <h2 class="section-heading">Skills</h2>
+                <div class="section-border"></div>
+              </div>
+              <div class="skill-field">
+                <h3 class="skill-field-title">Development: </h3>
+                <div class="skill-group">
+                  <ul class="css-10c7d0b">
+                    <li class="skill">NodeJs</li>
+                    <li class="skill">React</li>
+                    <li class="skill">GraphQL</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="skill-field">
+                <h3 class="skill-field-title">DevOps: </h3>
+                <div class="skill-group">
+                  <ul class="css-10c7d0b">
+                    <li class="skill">GitLab CI</li>
+                    <li class="skill">ElasticSearch</li>
+                    <li class="skill">Kibana</li>
+                    <li class="skill">Grafana</li>
+                    <li class="skill">Terraform</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="skill-field">
+                <h3 class="skill-field-title">Container Orchestration: </h3>
+                <div class="skill-group">
+                  <ul class="css-10c7d0b">
+                    <li class="skill">Kubernetes</li>
+                    <li class="skill">Helm</li>
+                    <li class="skill">Docker</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+{% endblock content%}
