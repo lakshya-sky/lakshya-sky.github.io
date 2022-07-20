@@ -29,7 +29,7 @@ body {
   }
 }
 .css-be9d8r {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   background-color: #e4ebf1;
@@ -37,7 +37,7 @@ body {
   min-width: 100vw;
 }
 .css-1jmx1h9 {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   padding-left: 0;
@@ -62,7 +62,7 @@ body {
   }
 }
 .css-1qbz534 {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   display: -webkit-box;
@@ -97,7 +97,7 @@ body {
 }
 
 .css-1tcp1k1 {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   margin: 0 auto;
@@ -108,7 +108,7 @@ body {
   min-height: auto;
 }
 .css-1gfkkfz {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   margin: 0 auto;
@@ -128,14 +128,14 @@ body {
   }
 }
 .header {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   margin-bottom: 40px;
   position: relative;
 }
 .h1 {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -149,7 +149,7 @@ body {
   margin-bottom: 8px;
 }
 .bio {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   display: block;
@@ -163,7 +163,7 @@ body {
   }
 }
 .pm-handles {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   width: 100%;
@@ -189,7 +189,7 @@ body {
   }
 }
 .current-role {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -200,7 +200,7 @@ body {
   font-weight: 600;
 }
 .handle {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -210,7 +210,7 @@ body {
   font-size: 16px;
 }
 .handle-link {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   color: inherit;
@@ -221,7 +221,7 @@ body {
   overflow-wrap: break-word;
 }
 .desc {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -232,18 +232,18 @@ body {
   color: secondaryText;
 }
 .page-container {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
 }
 .section {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   margin-bottom: 40px;
 }
 .section-title {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   display: -webkit-box;
@@ -258,7 +258,7 @@ body {
   page-break-inside: avoid;
 }
 .section-heading {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -271,7 +271,7 @@ body {
   font-size: 22px;
 }
 .section-border {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   -webkit-box-flex: 1;
@@ -284,7 +284,7 @@ body {
   margin-top: 9px;
 }
 .section-item {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   page-break-inside: avoid;
@@ -295,8 +295,24 @@ body {
     margin-bottom: 36px;
   }
 }
+
+.skill-item-header{
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+@media print {
+.skill-item-header{
+  }
+}
+
+
 .section-item-header {
-  box-sizing: border-box;
   margin: 0;
   min-width: 0;
   display: block;
@@ -306,6 +322,7 @@ body {
   align-items: baseline;
   margin-bottom: 16px;
 }
+
 @media screen and (min-width: 768px) {
   .section-item-header {
     display: -webkit-box;
@@ -315,8 +332,9 @@ body {
     margin-bottom: 24px;
   }
 }
+
 .title-container {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   padding-right: 0;
@@ -328,14 +346,22 @@ body {
   -ms-flex-positive: 0;
   flex-grow: 0;
 }
+
 @media screen and (min-width: 768px) {
   .title-container {
     min-width: 300px;
     padding-right: 16px;
   }
 }
+
+@media print {
+  .skill-item-header .title-container {
+    min-width: 200px;
+    padding-right: 16px;
+  }
+}
 .subtitle-container {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   display: -webkit-box;
@@ -362,7 +388,7 @@ body {
   }
 }
 .css-12qfpa0 {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -376,7 +402,7 @@ body {
   font-weight: 600;
 }
 .css-1wafmg3 {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   color: inherit;
@@ -390,7 +416,7 @@ body {
 }
 
 .subtitle-meta {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -410,13 +436,13 @@ body {
 }
 
 .desc-list {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   padding: 0;
 }
 .desc-list-item {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -429,7 +455,7 @@ body {
   padding-left: 0;
 }
 .css-1yh9w9q {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   display: block;
@@ -448,7 +474,7 @@ body {
   }
 }
 .title-main {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -462,7 +488,7 @@ body {
 }
 
 .subtitle-main {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -473,20 +499,20 @@ body {
 }
 
 .css-1qa1a31 {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   margin-top: 8px;
 }
 .css-gz6vba {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   margin-bottom: 40px;
   page-break-inside: avoid;
 }
 .css-10c7d0b {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   list-style: none;
@@ -497,7 +523,7 @@ body {
   border: none;
 }
 .skill-field {
-  box-sizing: border-box;
+  
   margin: 0.1rem 0;
   min-width: 0;
   display: -webkit-box;
@@ -511,9 +537,9 @@ body {
   page-break-inside: avoid;
 }
 .skill-group {
-  box-sizing: border-box;
+  
   margin: 0;
-  box-sizing: border-box;
+  
   margin: 0;
   margin-top: 0px;
   margin-left: 0px;
@@ -528,7 +554,7 @@ body {
   line-height: 1.2;
 }
 .skill-field-title {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
@@ -536,7 +562,7 @@ body {
   line-height: 1.2;
 }
 .skill {
-  box-sizing: border-box;
+  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
