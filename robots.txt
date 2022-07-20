@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lakshya-sky.github.io/sitemap.xml
