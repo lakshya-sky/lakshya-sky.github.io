@@ -354,13 +354,13 @@ body {
 
 @media screen and (min-width: 768px) {
   .section-item {
-    margin-bottom: var(--8px);
+    margin-bottom: var(--6px);
   }
 }
 
 @media print {
   .section-item{
-    margin-bottom: 2px;
+    margin-bottom: var(--2px);
   }
 }
 
