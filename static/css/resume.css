@@ -150,7 +150,6 @@ body {
   min-height: auto;
 }
 .css-1gfkkfz {
-  
   margin: 0;
   min-width: 0;
   margin: 0 auto;
@@ -161,14 +160,17 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
 }
-@media screen and (min-width: 768px) {
-  .css-1gfkkfz {
-    padding-left: 60px;
-    padding-right: 60px;
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-}
+
+
+/* @media screen and (min-width: 768px) { */
+/*   .css-1gfkkfz { */
+/*     padding-left: 60px; */
+/*     padding-right: 60px; */
+/*     padding-top: 60px; */
+/*     padding-bottom: 60px; */
+/*   } */
+/* } */
+
 .header {
   margin: 0;
   min-width: 0;
@@ -393,6 +395,20 @@ body {
   margin-bottom: var(--16px);
 }
 
+.two-line{
+  flex-wrap: wrap;
+justify-content: space-between;
+  flex-direction: column;
+}
+
+.two-line-item:first-child{
+  width: 100%;
+}
+
+.two-line-item:not(:first-child){
+  width: 100%;
+}
+
 @media screen and (min-width: 768px) {
   .section-item-header {
     display: -webkit-box;
@@ -490,12 +506,11 @@ body {
 }
 
 .subtitle-meta {
-  
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
   color: #4f5157;
   -webkit-flex-shrink: 0;
@@ -557,7 +572,7 @@ body {
   margin: 0;
   min-width: 300px;
   color: #000;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
   font-family: "IBM Plex Sans", sans-serif;
   font-size: var(--22px);
@@ -567,7 +582,7 @@ body {
   margin: 0;
   min-width: 0;
   font-family: "IBM Plex Sans", sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
   line-height: 1.2;
   color: #000;
