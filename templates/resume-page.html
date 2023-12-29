@@ -7,6 +7,7 @@
   <meta name="description" content="{{ description or site.description }}">
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;500&amp;display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.typekit.net/kpf8pfn.css">
   <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous"> -->
   <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/grids-responsive-min.css"> -->
   <link rel="stylesheet" href="/css/resume.css">
@@ -27,8 +28,10 @@
             <h1 class="h1">{{ page.title }}</h1>
             <div class="bio">
               <div class="pm-handles">
-                <div class="current-role">Software Developer</div>
-                <!--<div class="current-location">Halifax, CA </div>-->
+                <!-- <div class="current-role">Software Developer</div> -->
+                <!-- <div class="current-location"> Vancouver, Canada  </div> -->
+                Vancouver, Canada
+                  <div class="vr-separator"> | </div>
                 <a href="http://github.com/lakshya-sky" target="_blank" rel="noopener noreferrer nofollow ugc"
                   class="handle-link">
                   github.com/lakshya-sky
@@ -48,38 +51,26 @@
                 <h2 class="section-heading">Skills</h2>
                 <div class="section-border"></div>
               </div>
-              <div class="section-item mb-12">
+              <div class="section-item mb-10">
                 <div class="skill-item-header">
                   <div class="title-container">
                     <h2 class="title-main ">Development: </h2>
                   </div>
                   <div class="subtitle-container">
                     <div class="subtitle-main-container">
-                      <h3 class="subtitle-main skills-list">Rust, Go, Node.js, React.js, Next.js, GraphQL</h3>
+                      <h3 class="subtitle-main skills-list">Typescript, Rust, Node.js, React.js, Next.js, GraphQL</h3>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="section-item mb-12">
+              <div class="section-item mb-10">
                 <div class="skill-item-header">
                   <div class="title-container">
                     <h2 class="title-main ">DevOps: </h2>
                   </div>
                   <div class="subtitle-container">
                     <div class="subtitle-main-container">
-                      <h3 class="subtitle-main skills-list">GitLab CI, Terraform, Google Cloud, AWS</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="section-item mb-12">
-                <div class="skill-item-header">
-                  <div class="title-container">
-                    <h2 class="title-main ">Container Orchestration: </h2>
-                  </div>
-                  <div class="subtitle-container">
-                    <div class="subtitle-main-container">
-                      <h3 class="subtitle-main skills-list">Kubernetes, Helm, Docker</h3>
+                      <h3 class="subtitle-main skills-list">Kubernetes, Helm, Docker, Terraform, Google Cloud, AWS</h3>
                     </div>
                   </div>
                 </div>
@@ -98,7 +89,7 @@
                   </div>
                   <div class="subtitle-container">
                     <div class="subtitle-main-container">
-                      <h3 class="subtitle-main location">Webisoft (Montreal, QC)
+                      <h3 class="subtitle-main location">Webisoft (Remote)
                       </h3>
                     </div>
                     <div class="subtitle-meta"><span>Sep 2022 – Current</span></div>
@@ -106,11 +97,10 @@
                 </div>
                 <div>
                   <ul class="desc-list">
-                    <li class="desc-list-item">Initiated 'Trustless Poker' from the ground up, sketching the entire system architecture and consulting with stakeholders to align the game's design with traditional web-based gaming experiences.</li>
-                    <li class="desc-list-item">Engineered a sophisticated peer-to-peer communication model within the game's frontend, achieving a rare feat in distributed system design. This structure ensured smooth and reliable gameplay by continuously synchronizing game state among players.</li>
-                    <li class="desc-list-item">
-                      Created a WebAssembly-based cryptographic library that is 40% more efficient than the JavaScript reference implementation, resulting in an application startup time reduction of over 4 seconds.</li>
-                       
+                    <li class="desc-list-item">Initiated 'Trustless Poker' from the ground up, sketching the entire system architecture.
+                    <li class="desc-list-item">Consulted with stakeholders to align the game's design with traditional web-based gaming experiences.</li>
+                    <li class="desc-list-item">Designed peer-to-peer system using React.js and Redux to sync player states to ensure smooth gameplay.</li>
+                    <li class="desc-list-item">Used WASM to improve speed by 40% and reduced app startup time by 4 seconds on browsers.</li>
                   </ul>
                 </div>
               </div>
@@ -130,9 +120,10 @@
                 </div>
                 <div>
                   <ul class="desc-list">
-                    <li class="desc-list-item">Automated secure processing of customer card details by implementing card tokenization in the payment service, reducing data leak risks.</li>
-                    <li class="desc-list-item">Optimized system performance during high-traffic events by redesigning the database schema, streamlining session logic, and implementing efficient Redis caching for stories, resulting in an improved user experience.</li>
-                    <li class="desc-list-item">Achieved over 90% code coverage for server-side functionality through unit and integration tests.</li>
+                    <li class="desc-list-item">Optimized SQL queries and rolled out a read-through cache layer using Redis, leading to a 88% reduction in p95 response times at peak times.</li>
+                    <li class="desc-list-item">Improved customer conversion by 20% by implementing card tokenization and automating recurring payments.</li>
+                    <li class="desc-list-item">Modified server-side session-based authentication to in-house JWT-based authentication.</li>
+                    <li class="desc-list-item"> Provided guidances for tech team members on learning Kubernetes and Consul.</li>
                   </ul>
                 </div>
               </div>
@@ -152,8 +143,8 @@
                 </div>
                 <div>
                   <ul class="desc-list">
-                    <li class="desc-list-item">Successfully orchestrated the migration of a Node.js backend to AWS Lambda functions and optimized data handling by transitioning to DynamoDB, resulting in substantial performance improvements and cost reduction.</li>
-                    <li class="desc-list-item">Consulted with healthcare professionals, effectively communicating requirements to develop a user-centric telehealth platform, enhancing patient access and care quality.</li>
+                    <li class="desc-list-item">Successfully orchestrated the migration of a Node.js backend to AWS Lambda functions and optimized data handling by transitioning to DynamoDB.</li>
+                    <li class="desc-list-item">Consulted with healthcare professionals, effectively communicating requirements to develop a user-centric telehealth platform.</li>
                      </li>
                   </ul>
                 </div>
@@ -173,7 +164,7 @@
                 </div>
                 <div>
                   <ul class="desc-list">
-                    <li class="desc-list-item">Collaborated with real estate agencies to fine-tune the residency management system, enhancing the lead generation platform. This direct engagement significantly boosted client satisfaction and operational efficiency.</li>
+                    <li class="desc-list-item">Collaborated with real estate agencies to fine-tune the residency management system, enhancing the lead generation platform.</li>
                     <li class="desc-list-item">Led regular updates and maintenance by collaborating with QA team, ensuring high performance and security.</li>
                   </ul>
                 </div>
@@ -206,40 +197,43 @@
                 <div class="section-border"></div>
               </div>
 
-              <div class="section-item">
-                <div class="section-item-header">
-                  <div class="title-container">
-                    <h2 class="title-main">ZK-Mixer - Anonymous Coin Transfer</h2>
-                  </div>
-                  <div class="subtitle-container">
-                    <div class="subtitle-meta"><span>Rust, Blockchain, zkSNARK, Substrate</span></div>
-                  </div>
-                </div>
-                <div>
-                  <ul class="desc-list">
-                    <li class="desc-list-item">Implemented a Zero-Knowledge system to enable confidential coin transfers while preserving user anonymity, effectively obfuscating transaction details. </li>
-                    <li class="desc-list-item">This project provided valuable insights into complex cryptographic concepts and data structures such as Merkle Trees and Vector Commitments.</li>
-                  </ul>
-                </div>
-              </div>
-
               <!-- <div class="section-item"> -->
               <!--   <div class="section-item-header"> -->
               <!--     <div class="title-container"> -->
-              <!--       <h2 class="title-main">Rovo - Deep Learning Library</h2> -->
+              <!--       <h2 class="title-main">ZK-Mixer - Anonymous Coin Transfer</h2> -->
               <!--     </div> -->
               <!--     <div class="subtitle-container"> -->
-              <!--       <div class="subtitle-meta"><span>Rust, PyTorch, Data Structures, Algorithms</span></div> -->
+              <!--       <div class="subtitle-meta"><span>Rust, Blockchain, zkSNARK, Substrate</span></div> -->
               <!--     </div> -->
               <!--   </div> -->
               <!--   <div> -->
               <!--     <ul class="desc-list"> -->
-              <!--       <li class="desc-list-item">Delved into PyTorch's C++ codebase to replicate its tensor processing approach, focusing on memory-safe concurrent operations on directed acyclic graph. This exploration enhanced my ability to handle complex architectures and fostered innovative thinking in dynamic computation graph applications.</li> -->
-              <!--       <li class="desc-list-item">Tasked with translating code to Rust, I adapted and redesigned the existing structures to comply with Rust’s unique paradigms and best practices.</li> -->
-              <!--       <li class="desc-list-item">This project was a significant learning opportunity, deepening my understanding of Rust’s rigorous safety features and its system programming approach.</li> -->
+              <!--       <li class="desc-list-item">Implemented a Zero-Knowledge system to enable confidential coin transfers while preserving user anonymity, effectively obfuscating transaction details. </li> -->
+              <!--       <li class="desc-list-item">This project provided valuable insights into complex cryptographic concepts and data structures such as Merkle Trees and Vector Commitments.</li> -->
               <!--     </ul> -->
               <!--   </div> -->
               <!-- </div> -->
+
+              <div class="section-item">
+                <div class="section-item-header">
+                  <div class="title-container">
+                    <h2 class="title-main">Rovo - Deep Learning Library</h2>
+                  </div>
+                  <div class="subtitle-container">
+                    <div class="subtitle-main-container">
+                      <h3 class="subtitle-main"><a href="https://github.com/lakshya-sky/rovo" target="_blank"
+                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Link</a></h3>
+                    </div>
+                    <div class="subtitle-meta"><span>Rust, PyTorch, Data Structures, Algorithms</span></div>
+                  </div>
+                </div>
+                <div>
+                  <ul class="desc-list">
+                    <li class="desc-list-item">Delved into PyTorch's C++ codebase to replicate its tensor processing approach, focusing on memory-safe concurrent operations on directed acyclic graph.</li>
+                    <li class="desc-list-item">Tasked with translating code to Rust, I adapted and redesigned the existing structures to comply with Rust's unique paradigms and best practices.</li>
+                  </ul>
+                </div>
+              </div>
 
 <!--               <div class="section-item"> -->
 <!--                 <div class="section-item-header"> -->
@@ -271,10 +265,9 @@
                   </div>
                   <div class="subtitle-container two-line-item">
                     <div class="subtitle-main-container">
-                      <h3 class="subtitle-main fw-400"><a href="https://www.dal.ca/" target="_blank"
-                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Dalhousie University, Halifax</a></h3>
+                      <h3 class="subtitle-main fw-400">Dalhousie University, Halifax</h3>
                     </div>
-                    <div class="subtitle-meta"><span>Sept 2019 - May 2021</span></div>
+                    <div class="subtitle-meta"><span>Sept 2019 - Dec 2020</span></div>
                   </div>
                 </div>
               </div>
@@ -285,8 +278,7 @@
                   </div>
                   <div class="subtitle-container two-line-item">
                     <div class="subtitle-main-container">
-                      <h3 class="subtitle-main fw-400"><a href="https://ddu.ac.in/" target="_blank"
-                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Dharmsinh Desai University, India</a></h3>
+                      <h3 class="subtitle-main fw-400">Dharmsinh Desai University, India</h3>
                     </div>
                     <div class="subtitle-meta"><span>Aug 2014 — May 2018</span></div>
                   </div>
