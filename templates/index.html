@@ -1,3 +1,12 @@
 {% extends "base.html" %}
+
 {% block content %}
+  <a href="{{ get_url(path='@/blog/_index.md') }}" class="button">Blog</a>
+  <a href="{{ get_url(path='@/resume/_index.md') }}" class="button">Resume</a>
+
+  <div class="documentation__content">
+        {% block doc_content %}
+        {% endblock doc_content %}
+  </div>
+
 {% endblock content %}
