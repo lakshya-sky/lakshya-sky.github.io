@@ -4,10 +4,10 @@
 {% set section = get_section(path="resume/_index.md") %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ section.title }}'s Resume</title>
+  <title>{{ section.extra.name }}'s Resume</title>
   <meta name="description" content="{{ description or site.description }}">
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;500&amp;display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.typekit.net/kpf8pfn.css">
   <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous"> -->
   <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/grids-responsive-min.css"> -->
@@ -27,16 +27,21 @@
       <div class="css-1tcp1k1">
         <div class="css-1gfkkfz">
           <header class="header">
-            <h1 class="h1">{{ section.title }}</h1>
+            <h1 class="h1">{{ section.extra.name }}</h1>
             <div class="bio">
               <div class="pm-handles">
                 <!-- <div class="current-role">Software Developer</div> -->
                 <!-- <div class="current-location"> Vancouver, Canada  </div> -->
-                Vancouver, Canada
+                Ottawa, Canada
                   <div class="vr-separator"> | </div>
-                <a href="http://github.com/lakshya-sky" target="_blank" rel="noopener noreferrer nofollow ugc"
+                <a href="https://github.com/lakshya-sky" target="_blank" rel="noopener noreferrer nofollow ugc"
                   class="handle-link">
                   github.com/lakshya-sky
+                </a>
+                <div class="vr-separator"> | </div>
+                <a href="https://www.linkedin.com/in/dkathiriya/" target="_blank" rel="noopener noreferrer nofollow ugc"
+                  class="handle-link">
+                  linkedin.com/in/dkathiriya
                 </a>
                 <!-- <div class="handle">maria@email.com</div> -->
                 <!-- <div class="handle">555-555-5555</div> -->
@@ -50,36 +55,6 @@
             <div class="pdf-page-column page-container" />
             <section class="section">
               <div class="section-title">
-                <h2 class="section-heading">Skills</h2>
-                <div class="section-border"></div>
-              </div>
-              <div class="section-item mb-10">
-                <div class="skill-item-header">
-                  <div class="title-container">
-                    <h2 class="title-main ">Development: </h2>
-                  </div>
-                  <div class="subtitle-container">
-                    <div class="subtitle-main-container">
-                      <h3 class="subtitle-main skills-list">Typescript, Rust, Node.js, React.js, Next.js, GraphQL</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="section-item mb-10">
-                <div class="skill-item-header">
-                  <div class="title-container">
-                    <h2 class="title-main ">DevOps: </h2>
-                  </div>
-                  <div class="subtitle-container">
-                    <div class="subtitle-main-container">
-                      <h3 class="subtitle-main skills-list">Kubernetes, Helm, Docker, Terraform, Google Cloud, AWS</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section class="section">
-              <div class="section-title">
                 <h2 class="section-heading">Work Experience</h2>
                 <div class="section-border"></div>
               </div>
@@ -91,18 +66,17 @@
                   </div>
                   <div class="subtitle-container">
                     <div class="subtitle-main-container">
-                      <h3 class="subtitle-main location">Webisoft (Remote)
-                      </h3>
+                      <h3 class="subtitle-main location">Webisoft</h3>
                     </div>
-                    <div class="subtitle-meta"><span>Sep 2022 – Current</span></div>
+                    <div class="subtitle-meta"><span>Sep 2022 - Nov 2025</span></div>
                   </div>
                 </div>
                 <div>
                   <ul class="desc-list">
-                    <li class="desc-list-item">Initiated 'Trustless Poker' from the ground up, defining the system's technical blueprint.
+                    <li class="desc-list-item">Initiated 'Trustless Poker' from the ground up, defining the system's technical blueprint.</li>
                     <li class="desc-list-item">Collaboratively refined the game's design through active consultation with stakeholders, bridging the gap between traditional web games and blockchain technology.</li>
-                    <li class="desc-list-item">Designed peer-to-peer system using React.js and Redux to sync player states an engaging gaming experience.</li>
-                    <li class="desc-list-item">Used WASM to improve speed by 40% and reduced app startup time by 4 seconds on browsers.</li>
+                    <li class="desc-list-item">Designed a peer-to-peer system using React.js and Redux to sync player states and deliver an engaging gaming experience.</li>
+                    <li class="desc-list-item">Used WASM to improve speed by 40% and reduce app startup time by 4 seconds in browsers.</li>
                   </ul>
                 </div>
               </div>
@@ -114,18 +88,17 @@
                   <div class="subtitle-container">
                     <div class="subtitle-main-container">
                       <h3 class="subtitle-main location">
-                      allNovascotia (Halifax, NS)
+                      allNovascotia
                       </h3>
                     </div>
-                    <div class="subtitle-meta"><span>Mar 2021 – Sept 2022</span></div>
+                    <div class="subtitle-meta"><span>Mar 2021 - Sept 2022</span></div>
                   </div>
                 </div>
                 <div>
                   <ul class="desc-list">
-                    <li class="desc-list-item">Optimized SQL queries and rolled out a read-through cache layer using Redis, leading to a 88% reduction in p95 response times at peak times.</li>
-                    <li class="desc-list-item">Improved customer conversion by 20% by implementing card tokenization and automating recurring payments.</li>
-                    <li class="desc-list-item">Modified server-side session-based authentication to in-house JWT-based authentication.</li>
-                    <li class="desc-list-item"> Provided guidances for tech team members on learning Kubernetes and Consul.</li>
+                    <li class="desc-list-item">Fixed breaking-news traffic outages by correcting a PHP session bug that unnecessarily created Postgres session rows, removing per-request session-table read/write contention and handling spike traffic without backend stalls.</li>
+                    <li class="desc-list-item">Built CMS crash-recovery autosave by caching drafts to prevent journalist data loss, and created a PHP↔Next.js templating layer to enable a smooth migration, reducing downtime risk and accelerating rollout.</li>
+                    <li class="desc-list-item">Automated subscription billing by rebuilding the payment backend to charge cards on customer join dates, integrating compliant, non-interactive processing to eliminate monthly batch uploads and manual outreach while improving on-time collections.</li>
                   </ul>
                 </div>
               </div>
@@ -137,17 +110,15 @@
                   </div>
                   <div class="subtitle-container">
                     <div class="subtitle-main-container">
-                      <h3 class="subtitle-main location">YQG Technologies Inc (Windsor,
-                        ON)</h3>
+                      <h3 class="subtitle-main location">YQG Technologies Inc</h3>
                     </div>
-                    <div class="subtitle-meta"><span>Sept 2020 – Feb 2021</span></div>
+                    <div class="subtitle-meta"><span>Sept 2020 - Feb 2021</span></div>
                   </div>
                 </div>
                 <div>
                   <ul class="desc-list">
-                    <li class="desc-list-item">Led a team of three engineers in rolling out peer-to-peer video calling feature using WebRTC.</li>
-                    <li class="desc-list-item">Rearchitected a Node.js backend into a scalable, cost-effective AWS serverless stack using Lambda functions, API Gateway, and DynamoDB.</li>
-                     </li>
+                    <li class="desc-list-item">Shipped a telehealth video-calling MVP solo by integrating Amazon Chime SDK into a React client and building AWS Lambda + DynamoDB meeting/orchestration APIs with appointment-based auth, validating UX and technical feasibility.</li>
+                    <li class="desc-list-item">Helped roll out the Node.js backend to an AWS serverless stack (Lambda, API Gateway, DynamoDB) to improve scalability and reduce operational overhead.</li>
                   </ul>
                 </div>
               </div>
@@ -158,17 +129,17 @@
                   </div>
                   <div class="subtitle-container">
                     <div class="subtitle-main-container">
-                      <h3 class="subtitle-main location">Aarvi Technology (Surat, India)
+                      <h3 class="subtitle-main location">Aarvi Technology
                       </h3>
                     </div>
-                    <div class="subtitle-meta"><span>June 2018 – July 2019</span></div>
+                    <div class="subtitle-meta"><span>June 2018 - July 2019</span></div>
                   </div>
                 </div>
                 <div>
                   <ul class="desc-list">
-                    <li class="desc-list-item">Implemented a Jenkins CI/CD pipeline with Github for continuous integration and deployment, streamlining development processes.</li>
-                    <li class="desc-list-item">Communicated updates and addressed concerns with the QA team, resolving 6 critical issues before launch.</li>
-                    <li class="desc-list-item">Collaborated with real estate agencies to fine-tune the residency management system, boosting lead generation through platform improvements.</li>
+                    <li class="desc-list-item">Implemented a Jenkins-based CI/CD pipeline integrated with GitHub to standardize builds and deployments, improving release consistency and developer workflow.</li>
+                    <li class="desc-list-item">Coordinated closely with QA to triage, fix, and verify critical issues before launch, improving production readiness.</li>
+                    <li class="desc-list-item">Worked with real estate agencies to refine workflows and product requirements for a residency management system, improving platform usability and lead-generation outcomes.</li>
                   </ul>
                 </div>
               </div>
@@ -180,10 +151,10 @@
                   </div>
                   <div class="subtitle-container">
                     <div class="subtitle-main-container">
-                      <h3 class="subtitle-main location">Narola Infotech (Surat, India)
+                      <h3 class="subtitle-main location">Narola Infotech
                       </h3>
                     </div>
-                    <div class="subtitle-meta"><span>Dec 2017 – May 2018</span></div>
+                    <div class="subtitle-meta"><span>Dec 2017 - May 2018</span></div>
                   </div>
                 </div>
                 <div>
@@ -194,68 +165,7 @@
                 </div>
               </div>
             </section>
-            <section class="section">
-              <div class="section-title">
-                <h2 class="section-heading">Projects</h2>
-                <div class="section-border"></div>
-              </div>
 
-              <!-- <div class="section-item"> -->
-              <!--   <div class="section-item-header"> -->
-              <!--     <div class="title-container"> -->
-              <!--       <h2 class="title-main">ZK-Mixer - Anonymous Coin Transfer</h2> -->
-              <!--     </div> -->
-              <!--     <div class="subtitle-container"> -->
-              <!--       <div class="subtitle-meta"><span>Rust, Blockchain, zkSNARK, Substrate</span></div> -->
-              <!--     </div> -->
-              <!--   </div> -->
-              <!--   <div> -->
-              <!--     <ul class="desc-list"> -->
-              <!--       <li class="desc-list-item">Implemented a Zero-Knowledge system to enable confidential coin transfers while preserving user anonymity, effectively obfuscating transaction details. </li> -->
-              <!--       <li class="desc-list-item">This project provided valuable insights into complex cryptographic concepts and data structures such as Merkle Trees and Vector Commitments.</li> -->
-              <!--     </ul> -->
-              <!--   </div> -->
-              <!-- </div> -->
-
-              <div class="section-item">
-                <div class="section-item-header">
-                  <div class="title-container">
-                    <h2 class="title-main">Rovo - Deep Learning Library</h2>
-                  </div>
-                  <div class="subtitle-container">
-                    <div class="subtitle-main-container">
-                      <h3 class="subtitle-main"><a href="https://github.com/lakshya-sky/rovo" target="_blank"
-                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Link</a></h3>
-                    </div>
-                    <div class="subtitle-meta"><span>Rust, PyTorch, Data Structures, Algorithms</span></div>
-                  </div>
-                </div>
-                <div>
-                  <ul class="desc-list">
-                    <li class="desc-list-item">Delved into PyTorch's C++ codebase to replicate its tensor processing approach, focusing on memory-safe concurrent operations on directed acyclic graph.</li>
-                    <li class="desc-list-item">Tasked with translating code to Rust, I adapted and redesigned the existing structures to comply with Rust's unique paradigms and best practices.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="section-item">
-                <div class="section-item-header">
-                  <div class="title-container">
-                    <h2 class="title-main">TweetSense</h2>
-                  </div>
-                  <div class="subtitle-container">
-                    <div class="subtitle-meta"><span>Python, Kafka, Spark Streaming, Elasticsearch</span></div>
-                  </div>
-                </div>
-                <div>
-                  <ul class="desc-list">
-                    <li class="desc-list-item">Implemented producer to fetch tweets in real-time through Twitter API and send those tweets to Kafka. </li>
-                    <li class="desc-list-item">Consumed tweets from Kafka and performed sentiment analysis using TextBlob Library.</li>
-                    <li class="desc-list-item">Visualized the sentiment classification of 1M+ tweets containing a particular hashtag using Kibana.</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
             <section class="section">
               <div class="section-title">
                 <h2 class="section-heading">Education</h2>
@@ -267,27 +177,87 @@
                     <h2 class="title-main ">Master of Applied Computer Science</h2>
                   </div>
                   <div class="subtitle-container two-line-item">
-                    <div class="subtitle-main-container">
+                    <div class="subtitle-main-container fw-400">
                       <h3 class="subtitle-main fw-400">Dalhousie University, Halifax</h3>
                     </div>
-                    <div class="subtitle-meta"><span>Sept 2019 - Dec 2020</span></div>
+                    <div class="subtitle-meta fw-400"><span>Sept 2019 - Dec 2020</span></div>
                   </div>
                 </div>
               </div>
-              <div class="section-item mb-12">
-                <div class="section-item-header mb-12 two-line">
-                  <div class="title-container two-line-item">
-                    <h2 class="title-main ">Bachelor of Technology, Information Technology</h2>
-                  </div>
-                  <div class="subtitle-container two-line-item">
-                    <div class="subtitle-main-container">
-                      <h3 class="subtitle-main fw-400">Dharmsinh Desai University, India</h3>
-                    </div>
-                    <div class="subtitle-meta"><span>Aug 2014 — May 2018</span></div>
-                  </div>
-                </div>
-              </div>
+              <!-- <div class="section-item mb-12"> -->
+              <!--   <div class="section-item-header mb-12 two-line"> -->
+              <!--     <div class="title-container two-line-item"> -->
+              <!--       <h2 class="title-main ">Bachelor of Technology, Information Technology</h2> -->
+              <!--     </div> -->
+              <!--     <div class="subtitle-container two-line-item"> -->
+              <!--       <div class="subtitle-main-container"> -->
+              <!--         <h3 class="subtitle-main fw-400">Dharmsinh Desai University, India</h3> -->
+              <!--       </div> -->
+              <!--       <div class="subtitle-meta fw-400"><span>Aug 2014 - May 2018</span></div> -->
+              <!--     </div> -->
+              <!--   </div> -->
+              <!-- </div> -->
             </section>
+
+            <section class="section">
+              <div class="section-title">
+                <h2 class="section-heading">Skills</h2>
+                <div class="section-border"></div>
+              </div>
+              <ul class="css-10c7d0b skills-list">
+                <li class="skill">API Design</li>
+                <li class="skill">Smart Contracts</li>
+                <li class="skill">Node.js</li>
+                <li class="skill">Next.js</li>
+                <li class="skill">GraphQL</li>
+                <li class="skill">Docker</li>
+              </ul>
+            </section>
+            <!-- <section class="section"> -->
+            <!--   <div class="section-title"> -->
+            <!--     <h2 class="section-heading">Projects</h2> -->
+            <!--     <div class="section-border"></div> -->
+            <!--   </div> -->
+            <!---->
+            <!--   <div class="section-item"> -->
+            <!--     <div class="section-item-header"> -->
+            <!--       <div class="title-container"> -->
+            <!--         <h2 class="title-main">ZK-Mixer - Anonymous Coin Transfer</h2> -->
+            <!--       </div> -->
+            <!--       <div class="subtitle-container"> -->
+            <!--         <div class="subtitle-meta"><span>Rust, Blockchain, zkSNARK, Substrate</span></div> -->
+            <!--       </div> -->
+            <!--     </div> -->
+            <!--     <div> -->
+            <!--       <ul class="desc-list"> -->
+            <!--         <li class="desc-list-item">Implemented a Zero-Knowledge system to enable confidential coin transfers while preserving user anonymity, effectively obfuscating transaction details. </li> -->
+            <!--         <li class="desc-list-item">This project provided valuable insights into complex cryptographic concepts and data structures such as Merkle Trees and Vector Commitments.</li> -->
+            <!--       </ul> -->
+            <!--     </div> -->
+            <!--   </div> -->
+            <!---->
+            <!--   <div class="section-item"> -->
+            <!--     <div class="section-item-header"> -->
+            <!--       <div class="title-container"> -->
+            <!--         <h2 class="title-main">Rovo - Deep Learning Library</h2> -->
+            <!--       </div> -->
+            <!--       <div class="subtitle-container"> -->
+            <!--         <div class="subtitle-main-container"> -->
+            <!--           <h3 class="subtitle-main"><a href="https://github.com/lakshya-sky/rovo" target="_blank" -->
+            <!--               rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Link</a></h3> -->
+            <!--         </div> -->
+            <!--         <div class="subtitle-meta"><span>Rust, PyTorch, Data Structures, Algorithms</span></div> -->
+            <!--       </div> -->
+            <!--     </div> -->
+            <!--     <div> -->
+            <!--       <ul class="desc-list"> -->
+            <!--         <li class="desc-list-item">Delved into PyTorch's C++ codebase to replicate its tensor processing approach, focusing on memory-safe concurrent operations on directed acyclic graph.</li> -->
+            <!--         <li class="desc-list-item">Tasked with translating code to Rust, I adapted and redesigned the existing structures to comply with Rust's unique paradigms and best practices.</li> -->
+            <!--       </ul> -->
+            <!--     </div> -->
+            <!--   </div> -->
+            <!-- </section> -->
+
 
           </div>
         </div>
