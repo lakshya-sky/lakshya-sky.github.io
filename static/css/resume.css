@@ -1,5 +1,5 @@
 @page {
-  size: a4 portrait;
+  size: A4 portrait;
 }
 
 @media print {
@@ -82,7 +82,7 @@ body {
 @media print {
   body {
     background-color: #fff;
-    font-size: var(--12px);
+    font-size: var(--14px);
     line-height: 1.2;
   }
 }
