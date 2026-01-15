@@ -2,6 +2,13 @@
   size: a4 portrait;
 }
 
+@media print {
+  .new-page {
+    page-break-before: always;
+    padding-top: 40px;
+  }
+}
+
 /*12px: 0.75rem;*/
 :root {
   --colorFirst: #2a3ffb;
@@ -196,7 +203,7 @@ body {
   position: relative;
 }
 
-.header>*:not(:last-child) {
+.header > *:not(:last-child) {
   margin-bottom: var(--6px);
 }
 
@@ -319,7 +326,7 @@ body {
   margin-bottom: var(--40px);
 }
 
-.section>*:not(:last-child) {
+.section > *:not(:last-child) {
   margin-bottom: var(--18px);
 }
 
@@ -624,7 +631,7 @@ body {
   padding: 0;
 }
 
-.css-10c7d0b> :last-child {
+.css-10c7d0b > :last-child {
   border: none;
 }
 
@@ -644,6 +651,6 @@ body {
 }
 
 .skills-list {
-  font-weight: 500;
+  font-weight: 400;
   font-size: var(--16px);
 }

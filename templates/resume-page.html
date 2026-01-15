@@ -21,9 +21,6 @@
 {% set section = get_section(path="resume/_index.md") %}
   <main class="main">
     <div class="css-1jmx1h9">
-      <div class="css-1qbz534">
-        <div class="css-1bnx3o6"></div>
-        </div>
       <div class="css-1tcp1k1">
         <div class="css-1gfkkfz">
           <header class="header">
@@ -151,8 +148,7 @@
                   </div>
                   <div class="subtitle-container">
                     <div class="subtitle-main-container">
-                      <h3 class="subtitle-main location">Narola Infotech
-                      </h3>
+                      <h3 class="subtitle-main location">Narola Infotech </h3>
                     </div>
                     <div class="subtitle-meta"><span>Dec 2017 - May 2018</span></div>
                   </div>
@@ -160,12 +156,14 @@
                 <div>
                   <ul class="desc-list">
                     <li class="desc-list-item">Migrated from PHP server-side rendering to a REST API for web and mobile applications.</li>
-                    <li class="desc-list-item">Integrated payment and delivery services into the Textile ERP system.</li>
+                    <li class="desc-list-item">Integrated payment and delivery services into the Textile ERP using third-party APIs, improving order completion and fulfillment flow.</li>
                   </ul>
                 </div>
               </div>
             </section>
 
+            <div class="new-page">
+            <h1 class="h1 mb-12">{{ section.extra.name }}</h1>
             <section class="section">
               <div class="section-title">
                 <h2 class="section-heading">Education</h2>
@@ -184,19 +182,19 @@
                   </div>
                 </div>
               </div>
-              <!-- <div class="section-item mb-12"> -->
-              <!--   <div class="section-item-header mb-12 two-line"> -->
-              <!--     <div class="title-container two-line-item"> -->
-              <!--       <h2 class="title-main ">Bachelor of Technology, Information Technology</h2> -->
-              <!--     </div> -->
-              <!--     <div class="subtitle-container two-line-item"> -->
-              <!--       <div class="subtitle-main-container"> -->
-              <!--         <h3 class="subtitle-main fw-400">Dharmsinh Desai University, India</h3> -->
-              <!--       </div> -->
-              <!--       <div class="subtitle-meta fw-400"><span>Aug 2014 - May 2018</span></div> -->
-              <!--     </div> -->
-              <!--   </div> -->
-              <!-- </div> -->
+              <div class="section-item mb-12">
+                <div class="section-item-header mb-12 two-line">
+                  <div class="title-container two-line-item">
+                    <h2 class="title-main ">Bachelor of Technology, Information Technology</h2>
+                  </div>
+                  <div class="subtitle-container two-line-item">
+                    <div class="subtitle-main-container">
+                      <h3 class="subtitle-main fw-400">Dharmsinh Desai University, India</h3>
+                    </div>
+                    <div class="subtitle-meta fw-400"><span>Aug 2014 - May 2018</span></div>
+                  </div>
+                </div>
+              </div>
             </section>
 
             <section class="section">
@@ -204,59 +202,73 @@
                 <h2 class="section-heading">Skills</h2>
                 <div class="section-border"></div>
               </div>
-              <ul class="css-10c7d0b skills-list">
-                <li class="skill">API Design</li>
-                <li class="skill">Smart Contracts</li>
-                <li class="skill">Node.js</li>
-                <li class="skill">Next.js</li>
-                <li class="skill">GraphQL</li>
-                <li class="skill">Docker</li>
-              </ul>
+                <div class="skill-item-header">
+                  <div class="title-container">
+                    <h2 class="title-main ">Development: </h2>
+                  </div>
+                  <div class="subtitle-container">
+                    <div class="subtitle-main-container">
+                      <h3 class="subtitle-main skills-list">Typescript, Rust, Node.js, React.js, Next.js, GraphQL</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="skill-item-header">
+                  <div class="title-container">
+                    <h2 class="title-main ">DevOps: </h2>
+                  </div>
+                  <div class="subtitle-container">
+                    <div class="subtitle-main-container">
+                      <h3 class="subtitle-main skills-list">Kubernetes, Helm, Docker, Terraform, Google Cloud, AWS</h3>
+                    </div>
+                  </div>
+                </div>
             </section>
-            <!-- <section class="section"> -->
-            <!--   <div class="section-title"> -->
-            <!--     <h2 class="section-heading">Projects</h2> -->
-            <!--     <div class="section-border"></div> -->
-            <!--   </div> -->
-            <!---->
-            <!--   <div class="section-item"> -->
-            <!--     <div class="section-item-header"> -->
-            <!--       <div class="title-container"> -->
-            <!--         <h2 class="title-main">ZK-Mixer - Anonymous Coin Transfer</h2> -->
-            <!--       </div> -->
-            <!--       <div class="subtitle-container"> -->
-            <!--         <div class="subtitle-meta"><span>Rust, Blockchain, zkSNARK, Substrate</span></div> -->
-            <!--       </div> -->
-            <!--     </div> -->
-            <!--     <div> -->
-            <!--       <ul class="desc-list"> -->
-            <!--         <li class="desc-list-item">Implemented a Zero-Knowledge system to enable confidential coin transfers while preserving user anonymity, effectively obfuscating transaction details. </li> -->
-            <!--         <li class="desc-list-item">This project provided valuable insights into complex cryptographic concepts and data structures such as Merkle Trees and Vector Commitments.</li> -->
-            <!--       </ul> -->
-            <!--     </div> -->
-            <!--   </div> -->
-            <!---->
-            <!--   <div class="section-item"> -->
-            <!--     <div class="section-item-header"> -->
-            <!--       <div class="title-container"> -->
-            <!--         <h2 class="title-main">Rovo - Deep Learning Library</h2> -->
-            <!--       </div> -->
-            <!--       <div class="subtitle-container"> -->
-            <!--         <div class="subtitle-main-container"> -->
-            <!--           <h3 class="subtitle-main"><a href="https://github.com/lakshya-sky/rovo" target="_blank" -->
-            <!--               rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Link</a></h3> -->
-            <!--         </div> -->
-            <!--         <div class="subtitle-meta"><span>Rust, PyTorch, Data Structures, Algorithms</span></div> -->
-            <!--       </div> -->
-            <!--     </div> -->
-            <!--     <div> -->
-            <!--       <ul class="desc-list"> -->
-            <!--         <li class="desc-list-item">Delved into PyTorch's C++ codebase to replicate its tensor processing approach, focusing on memory-safe concurrent operations on directed acyclic graph.</li> -->
-            <!--         <li class="desc-list-item">Tasked with translating code to Rust, I adapted and redesigned the existing structures to comply with Rust's unique paradigms and best practices.</li> -->
-            <!--       </ul> -->
-            <!--     </div> -->
-            <!--   </div> -->
-            <!-- </section> -->
+
+            <section class="section">
+              <div class="section-title">
+                <h2 class="section-heading">Projects</h2>
+                <div class="section-border"></div>
+              </div>
+
+              <div class="section-item">
+                <div class="section-item-header">
+                  <div class="title-container">
+                    <h2 class="title-main">ZK-Mixer - Anonymous Coin Transfer</h2>
+                  </div>
+                  <div class="subtitle-container">
+                    <div class="subtitle-meta"><span>Rust, Blockchain, zkSNARK, Substrate</span></div>
+                  </div>
+                </div>
+                <div>
+                  <ul class="desc-list">
+                    <li class="desc-list-item">Implemented a Zero-Knowledge system to enable confidential coin transfers while preserving user anonymity, effectively obfuscating transaction details. </li>
+                    <li class="desc-list-item">This project provided valuable insights into complex cryptographic concepts and data structures such as Merkle Trees and Vector Commitments.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="section-item">
+                <div class="section-item-header">
+                  <div class="title-container">
+                    <h2 class="title-main">Rovo - Deep Learning Library</h2>
+                  </div>
+                  <div class="subtitle-container">
+                    <div class="subtitle-main-container">
+                      <h3 class="subtitle-main"><a href="https://github.com/lakshya-sky/rovo" target="_blank"
+                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Link</a></h3>
+                    </div>
+                    <div class="subtitle-meta"><span>Rust, PyTorch, Data Structures, Algorithms</span></div>
+                  </div>
+                </div>
+                <div>
+                  <ul class="desc-list">
+                    <li class="desc-list-item">Replicated PyTorch tensor processing by studying the C++ codebase and designing memory-safe DAG concurrency, improving safety.</li>
+                    <li class="desc-list-item">Translated core structures to Rust by redesigning APIs to match ownership rules, reducing runtime risk.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+            </div>
 
 
           </div>
