@@ -1,12 +1,26 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-    <ul>
-  {% for post in section.pages %}
-      <li>
-        <a href="{{ post.permalink }}">{{ post.title }}</a>
-      </li>
-      {% endfor %}
-    </ul>
-</div>
+  <main class="container">
+    {% include "partials/site-header.html" %}
+
+    <section class="posts-section">
+      <h2 class="section-title">Blog</h2>
+      <div class="posts">
+        {% for post in section.pages %}
+          <article class="post">
+            {% if post.date %}
+              <div class="meta">{{ post.date | date(format="%b %-d, %Y") }}</div>
+            {% endif %}
+            <h4 class="summary">{{ post.title }}</h4>
+            {% set excerpt = post.summary | default(value=post.content | striptags | truncate(length=220)) %}
+            <p class="description">{{ excerpt | safe }}</p>
+            <a class="read-more" href="{{ post.permalink }}">Read More...</a>
+          </article>
+        {% else %}
+          <p class="empty-state">No posts yet.</p>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
 {% endblock content %}

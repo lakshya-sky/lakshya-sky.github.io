@@ -1,13 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <a href="{{ get_url(path='@/blog/_index.md') }}" class="button">Blog</a>
-  <a href="{{ get_url(path='@/resume/_index.md') }}" class="button">Resume</a>
-  <a href="{{ get_url(path='tools/index.html') }}" class="button">Tools</a>
+  {% set blog = get_section(path="blog/_index.md") %}
+  <main class="container">
+    {% include "partials/site-header.html" %}
 
-  <div class="documentation__content">
-        {% block doc_content %}
-        {% endblock doc_content %}
-  </div>
+    <section class="posts-section">
+      <h2 class="section-title">Recent posts</h2>
+      <div class="posts">
+        {% for post in blog.pages | slice(end=8) %}
+          <article class="post">
+            {% if post.date %}
+              <div class="meta">{{ post.date | date(format="%b %-d, %Y") }}</div>
+            {% endif %}
+            <h4 class="summary">{{ post.title }}</h4>
+            {% set excerpt = post.summary | default(value=post.content | striptags | truncate(length=220)) %}
+            <p class="description">{{ excerpt | safe }}</p>
+            <a class="read-more" href="{{ post.permalink }}">Read More...</a>
+          </article>
+        {% else %}
+          <p class="empty-state">No posts yet.</p>
+        {% endfor %}
+      </div>
+    </section>
 
+    <section class="posts-section">
+      <h2 class="section-title">Tools</h2>
+      <div class="posts">
+        <article class="post">
+          <div class="meta">Converter</div>
+          <h4 class="summary">Byte Sequence -&gt; Hex</h4>
+          <p class="description">
+            Turn raw byte sequences into readable hex strings with formatting options.
+          </p>
+          <a class="read-more" href="{{ get_url(path='tools/byte-sequence-hex/index.html') }}">Read More...</a>
+        </article>
+      </div>
+    </section>
+  </main>
 {% endblock content %}
