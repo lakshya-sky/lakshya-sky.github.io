@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editing an Existing Vim Macro</title>
+    <link rel="stylesheet" href="https://lakshya-sky.github.io/css/site.css">
+</head>
+
+<body>
+  
+  <main class="container">
+    
+<header class="site-header">
+  <div class="header-image">
+    <img
+      src="https://lakshya-sky.github.io/images/profile.jpg"
+      alt="Darshan Kathiriya"
+      width="150"
+      height="150"
+      loading="eager"
+    />
+  </div>
+
+  <div class="header-title">
+    <h1>
+      <a href="https://lakshya-sky.github.io/">
+        Darshan Kathiriya
+      </a>
+    </h1>
+    
+      <h2>Things I revisit when building thoughtful software and reliable systems.</h2>
+    
+  </div>
+
+  <div class="header-nav">
+    <nav class="social-nav" aria-label="Social links">
+      <a href="https://github.com/lakshya-sky" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-3 .7-3.6-1.3-3.6-1.3-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.8.9 1.6 1.2.1-.8.4-1.3.7-1.6-2.4-.3-4.9-1.2-4.9-5.3 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.4.1-3 0 0 .9-.3 3.1 1.1a10.7 10.7 0 0 1 5.6 0c2.2-1.4 3.1-1.1 3.1-1.1.6 1.6.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.1-2.5 5-4.9 5.3.4.3.8 1 .8 2.1v3.1c0 .3.2.6.7.5A10 10 0 0 0 12 2z"
+          />
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/dkathiriya/" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M4.5 3a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h3v12H3V9zm7.5 0H13v1.6h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.6 2 3.6 4.6V21h-3v-6.2c0-1.5 0-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21h-3V9z"
+          />
+        </svg>
+      </a>
+    </nav>
+
+    <div class="nav-row">
+      <nav class="main-nav" aria-label="Primary">
+        <a href="https://lakshya-sky.github.io/blog/">Blog</a>
+        <a href="https://lakshya-sky.github.io/resume/">Resume</a>
+        <a href="https://lakshya-sky.github.io/tools/index.html">Tools</a>
+      </nav>
+
+      <!--
+      <form class="search" role="search">
+        <label class="sr-only" for="site-search">Search</label>
+        <input id="site-search" type="search" name="q" placeholder="Search..." />
+        <button type="submit" aria-label="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M15.8 14.4 21 19.6 19.6 21l-5.2-5.2a7 7 0 1 1 1.4-1.4zM5 10a5 5 0 1 0 10 0A5 5 0 0 0 5 10z"
+            />
+          </svg>
+        </button>
+      </form>
+      -->
+    </div>
+  </div>
+</header>
+
+
+    <article class="content">
+      <h1>Editing an Existing Vim Macro</h1>
+      <p>You do not need to re-record a macro when it is almost correct. You can edit the recorded keystrokes directly and keep the same register.</p>
+<h2 id="scenario">Scenario</h2>
+<p>You recorded a macro that works only if you manually move to the start of the line first. Rather than re-record it, add the missing <code>^</code> into the stored macro.</p>
+<h2 id="method-1-paste-edit-yank-back">Method 1: Paste, edit, yank back</h2>
+<p>This is the most readable option when you want to see the macro as text.</p>
+<ol>
+<li>Put the macro into the buffer (example: register <code>q</code>):</li>
+</ol>
+<pre><code>&quot;qp
+</code></pre>
+<ol start="2">
+<li>Edit the line like normal text (e.g., insert <code>^</code> at the front):</li>
+</ol>
+<pre><code>I^
+</code></pre>
+<ol start="3">
+<li>Yank the updated line back into the same register:</li>
+</ol>
+<pre><code>&quot;qyy
+</code></pre>
+<ol start="4">
+<li>Delete the temporary line:</li>
+</ol>
+<pre><code>dd
+</code></pre>
+<h2 id="method-2-edit-the-register-inline">Method 2: Edit the register inline</h2>
+<p>This is faster for tiny fixes.</p>
+<ol>
+<li>Start editing the register value:</li>
+</ol>
+<pre><code>:let @q=&#x27;
+</code></pre>
+<ol start="2">
+<li>Insert the current macro contents:</li>
+</ol>
+<pre><code>&lt;C-r&gt;&lt;C-r&gt;q
+</code></pre>
+<ol start="3">
+<li>Make your change, close the quote, and press Enter.</li>
+</ol>
+<h2 id="quick-reminders">Quick reminders</h2>
+<ul>
+<li>Record: <code>q{register}</code> … <code>q</code></li>
+<li>Play back: <code>@{register}</code></li>
+<li>Inspect: <code>:reg {register}</code></li>
+</ul>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>Use <code>&lt;C-v&gt;</code> to insert literal special keys when editing by hand.</li>
+<li>Avoid using the same register for yanks/deletes while you are tweaking a macro.</li>
+</ul>
+
+    </article>
+  </main>
+ 
+</body>
+
+</html>

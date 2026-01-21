@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Byte Sequence → Hex</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap");
+
+      :root {
+        --bg: #0f1226;
+        --bg-2: #171a36;
+        --card: #14182d;
+        --ink: #f3f4ff;
+        --muted: #a8b0d8;
+        --accent: #ff7a59;
+        --accent-2: #39d5ff;
+        --outline: #2a2f56;
+        --shadow: 0 20px 50px rgba(8, 10, 23, 0.5);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(800px 500px at 10% 15%, rgba(255, 122, 89, 0.15), transparent 60%),
+          radial-gradient(700px 400px at 90% 20%, rgba(57, 213, 255, 0.18), transparent 60%),
+          linear-gradient(160deg, #0b0d1b 0%, var(--bg) 40%, var(--bg-2) 100%);
+        display: grid;
+        place-items: center;
+        padding: 32px 20px 48px;
+      }
+
+      .shell {
+        width: min(900px, 100%);
+        display: grid;
+        gap: 24px;
+      }
+
+      header {
+        display: grid;
+        gap: 8px;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        letter-spacing: -0.02em;
+      }
+
+      header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .panel {
+        background: rgba(20, 24, 45, 0.9);
+        border: 1px solid var(--outline);
+        border-radius: 20px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(6px);
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      label {
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      textarea,
+      output {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid transparent;
+        background: #0d1022;
+        color: var(--ink);
+        padding: 16px;
+        font-size: 0.95rem;
+        font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
+        line-height: 1.5;
+      }
+
+      textarea {
+        min-height: 160px;
+        resize: vertical;
+        border-color: #24294d;
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(255, 122, 89, 0.2);
+      }
+
+      output {
+        display: block;
+        min-height: 72px;
+        border: 1px dashed #2f3564;
+        background: rgba(10, 12, 28, 0.8);
+        overflow-wrap: anywhere;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid #2a2f56;
+        background: rgba(15, 18, 38, 0.6);
+        color: var(--muted);
+        font-size: 0.9rem;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .toggle input {
+        accent-color: var(--accent-2);
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+      }
+
+      button {
+        appearance: none;
+        border: none;
+        border-radius: 999px;
+        padding: 12px 22px;
+        font-weight: 600;
+        cursor: pointer;
+        color: #0b0d1b;
+        background: linear-gradient(135deg, var(--accent) 0%, #ffd279 100%);
+        box-shadow: 0 10px 20px rgba(255, 122, 89, 0.3);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 24px rgba(255, 122, 89, 0.35);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      .chip {
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid #2a2f56;
+        background: rgba(15, 18, 38, 0.6);
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .status {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .status.error {
+        color: #ff9b9b;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .history-panel {
+        display: grid;
+        gap: 16px;
+      }
+
+      .history-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .history-header h2 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      .history-subtitle {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .history-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 14px;
+      }
+
+      .history-item {
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid #2a2f56;
+        background: rgba(10, 12, 28, 0.7);
+      }
+
+      .history-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        align-items: start;
+      }
+
+      .history-bytes {
+        margin: 0;
+        font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
+        font-size: 0.9rem;
+        white-space: pre-wrap;
+        word-break: normal;
+        max-width: 100%;
+        min-width: 0;
+        color: var(--ink);
+      }
+
+      .history-hex {
+        display: inline-block;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px dashed #2f3564;
+        background: rgba(15, 18, 38, 0.6);
+        color: var(--accent-2);
+        font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
+        font-size: 0.9rem;
+        overflow-wrap: anywhere;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      button.ghost {
+        background: transparent;
+        color: var(--muted);
+        border: 1px solid #2a2f56;
+        box-shadow: none;
+        padding: 10px 16px;
+      }
+
+      button.ghost:hover {
+        transform: translateY(-1px);
+        box-shadow: none;
+        color: var(--ink);
+        border-color: var(--accent-2);
+      }
+
+      button.ghost:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .fade-in {
+        animation: fade 0.7s ease both;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .panel {
+          padding: 18px;
+        }
+
+        button {
+          width: 100%;
+          text-align: center;
+        }
+
+        .actions {
+          align-items: stretch;
+        }
+
+        .toggle {
+          justify-content: center;
+          width: 100%;
+        }
+
+        .history-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="fade-in">
+        <h1>Byte sequence → hex string</h1>
+        <p>Paste decimal bytes separated by commas or spaces, and get a clean hex string.</p>
+      </header>
+
+      <section class="panel grid fade-in">
+        <div class="grid">
+          <label for="bytes-input">Byte sequence (0–255)</label>
+          <textarea
+            id="bytes-input"
+            spellcheck="false"
+            placeholder="202, 132, 32, 117, 99, 107, 132, 100, 117, 99, 107"
+          ></textarea>
+        </div>
+
+        <div class="actions">
+          <button id="convert-btn" type="button">Convert to hex</button>
+          <label class="toggle">
+            <input id="prefix-toggle" type="checkbox" />
+            <span>Add 0x prefix</span>
+          </label>
+          <div class="meta">
+            <span class="chip" id="count-chip">Bytes: 0</span>
+            <span class="chip" id="length-chip">Hex length: 0</span>
+          </div>
+        </div>
+
+        <div class="grid">
+          <label for="hex-output">Hex string</label>
+          <output id="hex-output" aria-live="polite"></output>
+          <div class="status" id="status-text">Ready.</div>
+        </div>
+      </section>
+
+      <section class="panel history-panel fade-in">
+        <div class="history-header">
+          <div>
+            <h2>History</h2>
+            <p class="history-subtitle">Normalized bytes → hex output from recent conversions.</p>
+          </div>
+          <button id="clear-history" class="ghost" type="button" disabled>Clear history</button>
+        </div>
+        <div class="status" id="history-empty">No conversions yet.</div>
+        <ol class="history-list" id="history-list" aria-live="polite"></ol>
+      </section>
+    </main>
+
+    <script>
+      const input = document.getElementById("bytes-input");
+      const output = document.getElementById("hex-output");
+      const statusText = document.getElementById("status-text");
+      const countChip = document.getElementById("count-chip");
+      const lengthChip = document.getElementById("length-chip");
+      const convertBtn = document.getElementById("convert-btn");
+      const prefixToggle = document.getElementById("prefix-toggle");
+      const historyList = document.getElementById("history-list");
+      const historyEmpty = document.getElementById("history-empty");
+      const clearHistoryBtn = document.getElementById("clear-history");
+
+      const parseBytes = (raw) => {
+        const trimmed = raw.trim();
+        if (!trimmed) {
+          return { bytes: [], error: null };
+        }
+
+        const tokens = trimmed.split(/[\s,]+/).filter(Boolean);
+        const bytes = [];
+
+        for (const token of tokens) {
+          if (!/^\d+$/.test(token)) {
+            return { bytes: [], error: `Invalid token "${token}". Use numbers only.` };
+          }
+          const value = Number(token);
+          if (!Number.isInteger(value) || value < 0 || value > 255) {
+            return { bytes: [], error: `Value ${value} is out of range (0–255).` };
+          }
+          bytes.push(value);
+        }
+
+        return { bytes, error: null };
+      };
+
+      const formatBytesInline = (bytes) => {
+        if (bytes.length === 0) {
+          return "[]";
+        }
+
+        return `[${bytes.join(", ")}]`;
+      };
+
+      const updateHistoryState = () => {
+        const hasItems = historyList.children.length > 0;
+        historyEmpty.hidden = hasItems;
+        clearHistoryBtn.disabled = !hasItems;
+      };
+
+      const addHistoryEntry = (bytes, displayHex) => {
+        const item = document.createElement("li");
+        item.className = "history-item";
+
+        const row = document.createElement("div");
+        row.className = "history-row";
+
+        const bytesBlock = document.createElement("pre");
+        bytesBlock.className = "history-bytes";
+        bytesBlock.textContent = formatBytesInline(bytes);
+
+        const hexBlock = document.createElement("code");
+        hexBlock.className = "history-hex";
+        hexBlock.textContent = displayHex;
+
+        row.append(bytesBlock, hexBlock);
+        item.append(row);
+        historyList.prepend(item);
+        updateHistoryState();
+      };
+
+      const update = () => {
+        const { bytes, error } = parseBytes(input.value);
+
+        if (error) {
+          output.textContent = "";
+          statusText.textContent = error;
+          statusText.classList.add("error");
+          countChip.textContent = "Bytes: 0";
+          lengthChip.textContent = "Hex length: 0";
+          return { bytes: [], displayHex: "", error };
+        }
+
+        statusText.classList.remove("error");
+        statusText.textContent = bytes.length ? "Converted." : "Ready.";
+
+        const hex = bytes
+          .map((byte) => byte.toString(16).toLowerCase().padStart(2, "0"))
+          .join("");
+
+        const displayHex = prefixToggle.checked ? `0x${hex}` : hex;
+        output.textContent = displayHex;
+        countChip.textContent = `Bytes: ${bytes.length}`;
+        lengthChip.textContent = `Hex length: ${displayHex.length}`;
+        return { bytes, displayHex, error: null };
+      };
+
+      convertBtn.addEventListener("click", () => {
+        const { bytes, displayHex, error } = update();
+        if (!error && bytes.length > 0) {
+          addHistoryEntry(bytes, displayHex);
+        }
+      });
+      prefixToggle.addEventListener("change", update);
+      input.addEventListener("input", () => {
+        if (input.value.trim().length === 0) {
+          update();
+        }
+      });
+      clearHistoryBtn.addEventListener("click", () => {
+        historyList.innerHTML = "";
+        updateHistoryState();
+      });
+
+      update();
+    </script>
+  </body>
+</html>
