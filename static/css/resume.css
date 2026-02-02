@@ -1,11 +1,12 @@
 @page {
   size: A4 portrait;
+  margin: 6mm;
 }
 
 @media print {
   .new-page {
     page-break-before: always;
-    padding-top: 40px;
+    padding-top: 12px;
   }
 }
 
@@ -45,7 +46,7 @@
 }
 
 .fw-350 {
-  font-weight: 350 !important;
+  font-weight: 300 !important;
 }
 
 * {
@@ -60,23 +61,10 @@ body {
   font-weight: 400;
   line-height: 1.5;
   background-color: rgba(242, 247, 252, 1);
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-variant-ligatures: contextual common-ligatures;
   font-kerning: normal;
-}
-
-@media screen and (min-width: 768px) {
-  body {
-    font-size: var(--16px);
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  body {
-    font-size: var(--16px);
-  }
 }
 
 @media print {
@@ -84,6 +72,8 @@ body {
     background-color: #fff;
     font-size: var(--14px);
     line-height: 1.2;
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "clig" 0, "dlig" 0;
   }
 }
 
@@ -91,8 +81,6 @@ body {
   margin: 0;
   min-width: 0;
   background-color: #e4ebf1;
-  min-height: 100vh;
-  min-width: 100vw;
 }
 
 @media print {
@@ -112,25 +100,10 @@ body {
   padding-bottom: 0;
 }
 
-@media screen and (min-width: 768px) {
-  .css-1jmx1h9 {
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .css-1jmx1h9 {
-    padding-left: 42px;
-    padding-right: 42px;
-    padding-bottom: 42px;
-  }
-}
 
 @media print {
   .css-1jmx1h9 {
-    margin: 0 8mm;
+    margin: 0;
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 0;
@@ -159,6 +132,13 @@ body {
   padding-right: 24px;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+@media print {
+  .css-1gfkkfz {
+    padding-top: 12px;
+    padding-bottom: 24px;
+  }
 }
 
 /* @media screen and (min-width: 768px) { */
@@ -210,14 +190,6 @@ body {
   display: block;
 }
 
-@media screen and (min-width: 768px) {
-  .bio {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
 
 .pm-handles {
   margin: 0;
@@ -235,11 +207,6 @@ body {
   flex-grow: 0;
 }
 
-@media screen and (min-width: 768px) {
-  .pm-handles {
-    padding-right: 16px;
-  }
-}
 
 .vr-separator {
   box-sizing: border-box;
@@ -286,7 +253,6 @@ body {
   line-height: 1.2;
   font-weight: 400;
   color: #000;
-  color: secondaryText;
 }
 
 .page-container {
@@ -317,9 +283,6 @@ body {
 .section-title {
   margin: 0;
   min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -401,6 +364,7 @@ body {
 
 @media print {
   .section-item-header {
+    display: flex;
     margin-bottom: var(--12px);
   }
 }
@@ -419,12 +383,6 @@ body {
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  .section-item-header {
-    display: -webkit-flex;
-    display: flex;
-  }
-}
 
 .title-container {
   margin: 0;
@@ -439,12 +397,6 @@ body {
   flex-grow: 0;
 }
 
-@media screen and (min-width: 768px) {
-  .title-container {
-    min-width: 300px;
-    padding-right: 16px;
-  }
-}
 
 @media print {
   .skill-item-header .title-container {
@@ -456,9 +408,6 @@ body {
 .subtitle-container {
   margin: 0;
   min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
@@ -475,11 +424,12 @@ body {
   margin-top: var(--4px);
 }
 
-@media screen and (min-width: 768px) {
+@media print {
   .subtitle-container {
     margin-top: 0;
   }
 }
+
 
 .subtitle-main {
   margin: 0;
@@ -502,18 +452,12 @@ body {
   margin: 0;
   min-width: 0;
   font-family: var(--fontFamily);
-  font-weight: 450;
+  font-weight: 400;
   line-height: 1.2;
   /* color: #4f5157; */
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-}
-
-@media (min-width: 768px) {
-  .subtitle-meta {
-    margin-left: auto;
-  }
 }
 
 .css-1wafmg3 {
@@ -559,14 +503,6 @@ body {
   margin-bottom: 12px;
 }
 
-@media screen and (min-width: 768px) {
-  .css-1yh9w9q {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
 
 .title-main {
   margin: 0;

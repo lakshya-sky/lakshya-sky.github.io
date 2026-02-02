@@ -1,0 +1,81 @@
+/* Screen-only overrides for the resume page. */
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+.main {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: var(--16px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: var(--16px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .css-1jmx1h9 {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .css-1jmx1h9 {
+    padding-left: 42px;
+    padding-right: 42px;
+    padding-bottom: 42px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bio {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pm-handles {
+    padding-right: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-item-header {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title-container {
+    min-width: 300px;
+    padding-right: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .subtitle-container {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .subtitle-meta {
+    margin-left: auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .css-1yh9w9q {
+    display: flex;
+  }
+}
