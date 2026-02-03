@@ -338,18 +338,18 @@ footer_menu = [
 # Default config, allows for https remote images and embedding YouTube and Vimeo content.
 # This configuration (along with the right webserver settings) gets an A+ in Mozilla's Observatory: https://observatory.mozilla.org
 # Note: to use a Zola built-in syntax highlighting theme, allow unsafe-inline for style-src.
-allowed_domains = [
-    { directive = "font-src", domains = ["'self'", "data:"] },
-    { directive = "img-src", domains = ["'self'", "https://*", "data:"] },
-    { directive = "media-src", domains = ["'self'", "https://cdn.jsdelivr.net/"] },
-    { directive = "script-src", domains = ["'self'"] },
-    { directive = "style-src", domains = ["'self'"] },
-    { directive = "frame-src", domains = ["player.vimeo.com", "https://www.youtube-nocookie.com"] },
-]
+# allowed_domains = [
+#     { directive = "font-src", domains = ["'self'", "data:"] },
+#     { directive = "img-src", domains = ["'self'", "https://*", "data:"] },
+#     { directive = "media-src", domains = ["'self'", "https://cdn.jsdelivr.net/"] },
+#     { directive = "script-src", domains = ["'self'"] },
+#     { directive = "style-src", domains = ["'self'", ""] },
+#     { directive = "frame-src", domains = ["player.vimeo.com", "https://www.youtube-nocookie.com"] },
+# ]
 
 # Enable the CSP directives configured (or default).
 # Can be set at page or section levels, following the hierarchy: page > section > config. See: https://welpo.github.io/tabi/blog/mastering-tabi-settings/#settings-hierarchy
-enable_csp = true
+# enable_csp = true
 
 # Font subsetting configuration.
 # This feature helps prevent text flashing in Firefox when using custom fonts.
