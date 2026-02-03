@@ -18,7 +18,7 @@ build_search_index = true
 # See https://welpo.github.io/tabi/blog/faq-languages/ for more details.
 default_language = "en"
 
-taxonomies = [{name = "tags", feed = true}]
+taxonomies = [{ name = "tags", feed = true }]
 
 [search]
 # Whether to include the title of the page/section in the index.
@@ -49,12 +49,8 @@ error_on_missing_language = true
 
 [link_checker]
 internal_level = "warn"
-skip_prefixes = [
-    "https://www.vultr.com/",
-]
-skip_anchor_prefixes = [
-    "https://github.com/",
-]
+skip_prefixes = ["https://www.vultr.com/"]
+skip_anchor_prefixes = ["https://github.com/"]
 
 [extra]
 # Check out the documentation (or the comments below) to learn how to customise tabi:
@@ -158,7 +154,7 @@ post_listing_date = "date"
 # Enable iine like buttons on all posts: https://iine.to/
 # Can be set at page or section levels, following the hierarchy: page > section > config. See: https://welpo.github.io/tabi/blog/mastering-tabi-settings/#settings-hierarchy
 iine = true
-iine_icon = "thumbs_up"  # See https://iine.to/#customise
+iine_icon = "thumbs_up" # See https://iine.to/#customise
 # Unify like counts across all language versions of the same page.
 # When enabled, likes on /es/blog/hello/ will count towards /blog/hello/ (default language).
 iine_unified_languages = true
@@ -171,7 +167,7 @@ iine_unified_languages = true
 # Determines if indexes should be increasing (false) or decreasing (true) in series' posts list.
 # It has only effect if the section uses indexes metadata (which is only the case for series as of now).
 # Can be set at section levels, following the hierarchy: section > config. See: https://welpo.github.io/tabi/blog/mastering-tabi-settings/#settings-hierarchy
-post_listing_index_reversed = false  # Defaults to false.
+post_listing_index_reversed = false # Defaults to false.
 
 # DEPRECATED!
 # Use Zola's built-in `bottom_footnotes = true` in the [markdown] section instead. (Available since v0.19.0)
@@ -231,8 +227,8 @@ archive_date_format = ""
 # Per-language date format overrides.
 # Examples: Spanish uses "3 de febrero de 2024", German uses "3. Februar 2024"
 date_formats = [
-    { lang = "es", long = "%d de %B de %Y", short = "%-d %b %Y" },
-    { lang = "de", long = "%d. %B %Y", short = "%d.%m.%Y", archive = "%d. %b" },
+  { lang = "es", long = "%d de %B de %Y", short = "%-d %b %Y" },
+  { lang = "de", long = "%d. %B %Y", short = "%d.%m.%Y", archive = "%d. %b" },
 ]
 
 # Custom separator used in title tag and posts metadata (between date, time to read, and tags).
@@ -272,11 +268,11 @@ favicon = "images/favicon.ico"
 # social_media_card = "index.jpg"
 
 menu = [
-    { name = "blog", url = "blog", trailing_slash = true },
-    { name = "tools", url = "tools", trailing_slash = true },
-    { name = "tags", url = "tags", trailing_slash = true },
-    { name = "projects", url = "projects", trailing_slash = true },
-    { name = "resume", url = "resume", trailing_slash = true },
+  { name = "blog", url = "blog", trailing_slash = true },
+  { name = "tools", url = "tools", trailing_slash = true },
+  { name = "tags", url = "tags", trailing_slash = true },
+  { name = "projects", url = "projects", trailing_slash = true },
+  { name = "resume", url = "resume", trailing_slash = true },
 ]
 
 # The RSS icon will be shown if (1) it's enabled and (2) the following variable is set.
@@ -295,14 +291,14 @@ full_content_in_feed = false
 # 2. Or, set 'encode_plaintext_email' to true for auto-encoding (only protects on site, not in public repos).
 email = "bWVAbGFrc2h5YXNreS54eXo="
 # Decoding requires ~400 bytes of JavaScript. If JS is disabled, the email won't be displayed.
-encode_plaintext_email = true  # Setting is ignored if email is already encoded.
+encode_plaintext_email = true # Setting is ignored if email is already encoded.
 
 # Social media links for the footer.
 # Built-in icons: https://github.com/welpo/tabi/tree/main/static/social_icons
 # To use a custom icon, add it to your site's `static/social_icons` directory.
 socials = [
-    { name = "github", url = "https://github.com/lakshya-sky/", icon = "github" },
-    { name = "x", url = "https://x.com/LakshyaSky", icon = "x" },
+  { name = "github", url = "https://github.com/lakshya-sky/", icon = "github" },
+  { name = "x", url = "https://x.com/LakshyaSky", icon = "x" },
 ]
 
 # Fediverse profile.
@@ -312,10 +308,10 @@ socials = [
 
 # Extra menu to show on the footer, below socials section.
 footer_menu = [
-    # {url = "about", name = "about", trailing_slash = true},
-    # {url = "privacy", name = "privacy", trailing_slash = true},
-    # {url = "https://tabi-stats.osc.garden", name = "site_statistics", trailing_slash = true},
-    # {url = "sitemap.xml", name = "sitemap", trailing_slash = false},
+  # {url = "about", name = "about", trailing_slash = true},
+  # {url = "privacy", name = "privacy", trailing_slash = true},
+  # {url = "https://tabi-stats.osc.garden", name = "site_statistics", trailing_slash = true},
+  # {url = "sitemap.xml", name = "sitemap", trailing_slash = false},
 ]
 
 # Enable a copyright notice for the footer, shown between socials and the "Powered by" text.
@@ -338,18 +334,41 @@ footer_menu = [
 # Default config, allows for https remote images and embedding YouTube and Vimeo content.
 # This configuration (along with the right webserver settings) gets an A+ in Mozilla's Observatory: https://observatory.mozilla.org
 # Note: to use a Zola built-in syntax highlighting theme, allow unsafe-inline for style-src.
-# allowed_domains = [
-#     { directive = "font-src", domains = ["'self'", "data:"] },
-#     { directive = "img-src", domains = ["'self'", "https://*", "data:"] },
-#     { directive = "media-src", domains = ["'self'", "https://cdn.jsdelivr.net/"] },
-#     { directive = "script-src", domains = ["'self'"] },
-#     { directive = "style-src", domains = ["'self'", ""] },
-#     { directive = "frame-src", domains = ["player.vimeo.com", "https://www.youtube-nocookie.com"] },
-# ]
+allowed_domains = [
+  { directive = "font-src", domains = [
+    "'self'",
+    "data:",
+    "https://lakshya-sky.github.io",
+    "https://lakshyasky.xyz",
+  ] },
+  { directive = "img-src", domains = [
+    "'self'",
+    "https://*",
+    "data:",
+  ] },
+  { directive = "media-src", domains = [
+    "'self'",
+    "https://cdn.jsdelivr.net/",
+  ] },
+  { directive = "script-src", domains = [
+    "'self'",
+    "https://lakshya-sky.github.io",
+    "https://lakshyasky.xyz",
+  ] },
+  { directive = "style-src", domains = [
+    "'self'",
+    "https://lakshya-sky.github.io",
+    "https://lakshyasky.xyz",
+  ] },
+  { directive = "frame-src", domains = [
+    "player.vimeo.com",
+    "https://www.youtube-nocookie.com",
+  ] },
+]
 
 # Enable the CSP directives configured (or default).
 # Can be set at page or section levels, following the hierarchy: page > section > config. See: https://welpo.github.io/tabi/blog/mastering-tabi-settings/#settings-hierarchy
-# enable_csp = true
+enable_csp = true
 
 # Font subsetting configuration.
 # This feature helps prevent text flashing in Firefox when using custom fonts.
@@ -504,9 +523,6 @@ custom_subset = true
 # p_nickname = "nickname"
 # p_locality = "Bordeaux"
 # p_country_name = "France"
-
-
-
 
 
 ###############################################################
