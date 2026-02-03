@@ -1,9 +1,11 @@
 +++
 title = "Editing an Existing Vim Macro"
-template = "blog-post.html"
+date = 2025-05-20
+
+[taxonomies]
+tags = ["vim"]
 
 [extra]
-name = "Darshan Kathiriya"
 +++
 
 You do not need to re-record a macro when it is almost correct. You can edit the recorded keystrokes directly and keep the same register.

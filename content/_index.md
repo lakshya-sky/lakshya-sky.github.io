@@ -1,8 +1,11 @@
 +++
-title = "Lakshya Sky's Blog"
-template = "index.html"
+title = "Latest Posts"
+sort_by = "date"
+template = "section.html"
+
 [extra]
-name = "Darshan Kathiriya"
-tagline = "Things I revisit when building thoughtful software and reliable systems."
+header = {title = "Hey! I'm Darshan", img = "/images/profile.jpg"}
+section_path = "blog/_index.md"
+max_posts = 4
 +++
-Welcome.
+Things I revisit when building thoughtful software and reliable systems.
