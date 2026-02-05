@@ -6,7 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ section.extra.name }}'s Resume</title>
 <meta name="description" content="{{ description or site.description }}">
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;500&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600&amp;display=swap"
+  rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap"
   rel="stylesheet" />
 <link rel="stylesheet" href="https://use.typekit.net/kpf8pfn.css">
@@ -65,7 +66,8 @@
                 </div>
                 <div class="subtitle-container">
                   <div class="subtitle-main-container">
-                    <h3 class="subtitle-main location">Webisoft</h3>
+
+                    <h3 class="subtitle-main">Webisoft<span class="location">, Montreal</span></h3>
                   </div>
                   <div class="subtitle-meta"><span>Sep 2022 - Nov 2025</span></div>
                 </div>
@@ -94,9 +96,7 @@
                 </div>
                 <div class="subtitle-container">
                   <div class="subtitle-main-container">
-                    <h3 class="subtitle-main location">
-                      allNovascotia
-                    </h3>
+                    <h3 class="subtitle-main">allNovascotia<span class="location">, Halifax </span></h3>
                   </div>
                   <div class="subtitle-meta"><span>Mar 2021 - Sept 2022</span></div>
                 </div>
@@ -124,7 +124,7 @@
                 </div>
                 <div class="subtitle-container">
                   <div class="subtitle-main-container">
-                    <h3 class="subtitle-main location">YQG Technologies Inc</h3>
+                    <h3 class="subtitle-main">YQG Technologies Inc<span class="location">, Windsor</span></h3>
                   </div>
                   <div class="subtitle-meta"><span>Sept 2020 - Feb 2021</span></div>
                 </div>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="subtitle-container">
                   <div class="subtitle-main-container">
-                    <h3 class="subtitle-main location">Aarvi Technology
+                    <h3 class="subtitle-main">Aarvi Technology
                     </h3>
                   </div>
                   <div class="subtitle-meta"><span>June 2018 - July 2019</span></div>
@@ -172,7 +172,7 @@
                 </div>
                 <div class="subtitle-container">
                   <div class="subtitle-main-container">
-                    <h3 class="subtitle-main location">Narola Infotech </h3>
+                    <h3 class="subtitle-main">Narola Infotech </h3>
                   </div>
                   <div class="subtitle-meta"><span>Dec 2017 - May 2018</span></div>
                 </div>
@@ -188,143 +188,145 @@
             </div>
           </section>
 
-          <div class="new-page">
-            <h1 class="h1 mb-12">{{ section.extra.name }}</h1>
-            <section class="section">
-              <div class="section-title">
-                <h2 class="section-heading">Education</h2>
-                <div class="section-border"></div>
-              </div>
-              <div class="section-item mb-12">
-                <div class="section-item-header mb-12 two-line">
-                  <div class="title-container">
-                    <h2 class="title-main ">Master of Applied Computer Science</h2>
-                  </div>
-                  <div class="subtitle-container two-line-item">
-                    <div class="subtitle-main-container fw-400">
-                      <h3 class="subtitle-main fw-400">Dalhousie University, Halifax</h3>
-                    </div>
-                    <div class="subtitle-meta fw-400"><span>Sept 2019 - Dec 2020</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="section-item mb-12">
-                <div class="section-item-header mb-12 two-line">
-                  <div class="title-container two-line-item">
-                    <h2 class="title-main ">Bachelor of Technology, Information Technology</h2>
-                  </div>
-                  <div class="subtitle-container two-line-item">
-                    <div class="subtitle-main-container">
-                      <h3 class="subtitle-main fw-400">Dharmsinh Desai University, India</h3>
-                    </div>
-                    <div class="subtitle-meta fw-400"><span>Aug 2014 - May 2018</span></div>
-                  </div>
-                </div>
-              </div>
-            </section>
+          <!-- <div class="new-page"> -->
+          <!--   <h1 class="h1 mb-12">{{ section.extra.name }}</h1> -->
 
-            <section class="section">
-              <div class="section-title">
-                <h2 class="section-heading">Skills</h2>
-                <div class="section-border"></div>
+          <section class="section">
+            <div class="section-title">
+              <h2 class="section-heading">Skills</h2>
+              <div class="section-border"></div>
+            </div>
+            <div class="skill-item-header">
+              <div class="title-container">
+                <h2 class="title-main ">Development: </h2>
               </div>
-              <div class="skill-item-header">
+              <div class="subtitle-container">
+                <div class="subtitle-main-container">
+                  <h3 class="subtitle-main skills-list">Typescript, Rust, Node.js, React.js, Next.js, GraphQL</h3>
+                </div>
+              </div>
+            </div>
+            <div class="skill-item-header">
+              <div class="title-container">
+                <h2 class="title-main ">DevOps: </h2>
+              </div>
+              <div class="subtitle-container">
+                <div class="subtitle-main-container">
+                  <h3 class="subtitle-main skills-list">Kubernetes, Helm, Docker, Terraform, Google Cloud, AWS</h3>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section-title">
+              <h2 class="section-heading">Education</h2>
+              <div class="section-border"></div>
+            </div>
+            <div class="section-item mb-12">
+              <div class="section-item-header mb-12 two-line">
                 <div class="title-container">
-                  <h2 class="title-main ">Development: </h2>
+                  <h2 class="title-main ">Master of Applied Computer Science</h2>
                 </div>
-                <div class="subtitle-container">
+                <div class="subtitle-container two-line-item">
+                  <div class="subtitle-main-container fw-400">
+                    <h3 class="subtitle-main fw-400">Dalhousie University, Halifax</h3>
+                  </div>
+                  <div class="subtitle-meta fw-400"><span>Sept 2019 - Dec 2020</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="section-item mb-12">
+              <div class="section-item-header mb-12 two-line">
+                <div class="title-container two-line-item">
+                  <h2 class="title-main ">Bachelor of Technology, Information Technology</h2>
+                </div>
+                <div class="subtitle-container two-line-item">
                   <div class="subtitle-main-container">
-                    <h3 class="subtitle-main skills-list">Typescript, Rust, Node.js, React.js, Next.js, GraphQL</h3>
+                    <h3 class="subtitle-main fw-400">Dharmsinh Desai University, India</h3>
                   </div>
+                  <div class="subtitle-meta fw-400"><span>Aug 2014 - May 2018</span></div>
                 </div>
               </div>
-              <div class="skill-item-header">
-                <div class="title-container">
-                  <h2 class="title-main ">DevOps: </h2>
-                </div>
-                <div class="subtitle-container">
-                  <div class="subtitle-main-container">
-                    <h3 class="subtitle-main skills-list">Kubernetes, Helm, Docker, Terraform, Google Cloud, AWS</h3>
-                  </div>
-                </div>
-              </div>
-            </section>
+            </div>
+          </section>
 
-            <section class="section">
-              <div class="section-title">
-                <h2 class="section-heading">Projects</h2>
-                <div class="section-border"></div>
-              </div>
 
-              <div class="section-item">
-                <div class="section-item-header">
-                  <div class="title-container">
-                    <h2 class="title-main">Ardra - MEV Arbitrage Bot</h2>
-                  </div>
-                  <div class="subtitle-container">
-                    <div class="subtitle-main-container">
-                      <h3 class="subtitle-main"><a href="https://github.com/lakshya-sky/ardra-bot" target="_blank"
-                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Link</a></h3>
-                    </div>
-                    <div class="subtitle-meta"><span>Ethereum, Solidity, DEX, Flashbots</span></div>
-                  </div>
-                </div>
-                <div>
-                  <ul class="desc-list">
-                    <li class="desc-list-item">Designed a real time event pipeline by streaming transactions and running
-                      EVM simulations against the next block using actor style components, learning to avoid shared
-                      locks so concurrency is easier to reason about and failures stay contained.</li>
-                    <li class="desc-list-item">Built a cross exchange pricing and arbitrage engine for Uniswap V2,
-                      Uniswap V3, and Curve using Rust, Ethers, SQLx, and Postgres, learning the block building flow
-                      where relays, builders, and validators coordinate to move bundles from searchers into a block so
-                      opportunities are evaluated in the right place and time.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="section-item">
-                <div class="section-item-header">
-                  <div class="title-container">
-                    <h2 class="title-main">ZK-Mixer - Anonymous Coin Transfer</h2>
-                  </div>
-                  <div class="subtitle-container">
-                    <div class="subtitle-meta"><span>Rust, Blockchain, zkSNARK, Substrate</span></div>
-                  </div>
-                </div>
-                <div>
-                  <ul class="desc-list">
-                    <li class="desc-list-item">Implemented a Zero-Knowledge system to enable confidential coin transfers
-                      while preserving user anonymity, effectively obfuscating transaction details. </li>
-                    <li class="desc-list-item">This project provided valuable insights into complex cryptographic
-                      concepts and data structures such as Merkle Trees and Vector Commitments.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="section-item">
-                <div class="section-item-header">
-                  <div class="title-container">
-                    <h2 class="title-main">Rovo - Deep Learning Library</h2>
-                  </div>
-                  <div class="subtitle-container">
-                    <div class="subtitle-main-container">
-                      <h3 class="subtitle-main"><a href="https://github.com/lakshya-sky/rovo" target="_blank"
-                          rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Link</a></h3>
-                    </div>
-                    <div class="subtitle-meta"><span>Rust, PyTorch, Data Structures, Algorithms</span></div>
-                  </div>
-                </div>
-                <div>
-                  <ul class="desc-list">
-                    <li class="desc-list-item">Replicated PyTorch tensor processing by studying the C++ codebase and
-                      designing memory-safe DAG concurrency, improving safety.</li>
-                    <li class="desc-list-item">Translated core structures to Rust by redesigning APIs to match ownership
-                      rules, reducing runtime risk.</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-          </div>
+          <!-- <section class="section"> -->
+          <!--   <div class="section-title"> -->
+          <!--     <h2 class="section-heading">Projects</h2> -->
+          <!--     <div class="section-border"></div> -->
+          <!--   </div> -->
+          <!---->
+          <!--   <div class="section-item"> -->
+          <!--     <div class="section-item-header"> -->
+          <!--       <div class="title-container"> -->
+          <!--         <h2 class="title-main">Ardra - MEV Arbitrage Bot</h2> -->
+          <!--       </div> -->
+          <!--       <div class="subtitle-container"> -->
+          <!--         <div class="subtitle-main-container"> -->
+          <!--           <h3 class="subtitle-main"><a href="https://github.com/lakshya-sky/ardra-bot" target="_blank" -->
+          <!--               rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Link</a></h3> -->
+          <!--         </div> -->
+          <!--         <div class="subtitle-meta"><span>Ethereum, Solidity, DEX, Flashbots</span></div> -->
+          <!--       </div> -->
+          <!--     </div> -->
+          <!--     <div> -->
+          <!--       <ul class="desc-list"> -->
+          <!--         <li class="desc-list-item">Designed a real time event pipeline by streaming transactions and running -->
+          <!--           EVM simulations against the next block using actor style components, learning to avoid shared -->
+          <!--           locks so concurrency is easier to reason about and failures stay contained.</li> -->
+          <!--         <li class="desc-list-item">Built a cross exchange pricing and arbitrage engine for Uniswap V2, -->
+          <!--           Uniswap V3, and Curve using Rust, Ethers, SQLx, and Postgres, learning the block building flow -->
+          <!--           where relays, builders, and validators coordinate to move bundles from searchers into a block so -->
+          <!--           opportunities are evaluated in the right place and time.</li> -->
+          <!--       </ul> -->
+          <!--     </div> -->
+          <!--   </div> -->
+          <!---->
+          <!--   <div class="section-item"> -->
+          <!--     <div class="section-item-header"> -->
+          <!--       <div class="title-container"> -->
+          <!--         <h2 class="title-main">ZK-Mixer - Anonymous Coin Transfer</h2> -->
+          <!--       </div> -->
+          <!--       <div class="subtitle-container"> -->
+          <!--         <div class="subtitle-meta"><span>Rust, Blockchain, zkSNARK, Substrate</span></div> -->
+          <!--       </div> -->
+          <!--     </div> -->
+          <!--     <div> -->
+          <!--       <ul class="desc-list"> -->
+          <!--         <li class="desc-list-item">Implemented a Zero-Knowledge system to enable confidential coin transfers -->
+          <!--           while preserving user anonymity, effectively obfuscating transaction details. </li> -->
+          <!--         <li class="desc-list-item">This project provided valuable insights into complex cryptographic -->
+          <!--           concepts and data structures such as Merkle Trees and Vector Commitments.</li> -->
+          <!--       </ul> -->
+          <!--     </div> -->
+          <!--   </div> -->
+          <!---->
+          <!--   <div class="section-item"> -->
+          <!--     <div class="section-item-header"> -->
+          <!--       <div class="title-container"> -->
+          <!--         <h2 class="title-main">Rovo - Deep Learning Library</h2> -->
+          <!--       </div> -->
+          <!--       <div class="subtitle-container"> -->
+          <!--         <div class="subtitle-main-container"> -->
+          <!--           <h3 class="subtitle-main"><a href="https://github.com/lakshya-sky/rovo" target="_blank" -->
+          <!--               rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Link</a></h3> -->
+          <!--         </div> -->
+          <!--         <div class="subtitle-meta"><span>Rust, PyTorch, Data Structures, Algorithms</span></div> -->
+          <!--       </div> -->
+          <!--     </div> -->
+          <!--     <div> -->
+          <!--       <ul class="desc-list"> -->
+          <!--         <li class="desc-list-item">Replicated PyTorch tensor processing by studying the C++ codebase and -->
+          <!--           designing memory-safe DAG concurrency, improving safety.</li> -->
+          <!--         <li class="desc-list-item">Translated core structures to Rust by redesigning APIs to match ownership -->
+          <!--           rules, reducing runtime risk.</li> -->
+          <!--       </ul> -->
+          <!--     </div> -->
+          <!--   </div> -->
+          <!-- </section> -->
+          <!-- </div> -->
 
 
         </div>
