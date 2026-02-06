@@ -1,0 +1,230 @@
+{% set resume = load_data(path=section.extra.resume_data) %}
+{% set month_names = ["", "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"] %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ resume.basics.name }}'s Resume</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../css/resume.css">
+  <link rel="stylesheet" href="../css/resume-screen.css" media="screen">
+</head>
+
+<body>
+  <main class="main">
+    <div class="css-1jmx1h9">
+      <div class="css-1tcp1k1">
+        <div class="css-1gfkkfz">
+          <header class="header">
+            <h1 class="h1">{{ resume.basics.name }}</h1>
+            <div class="bio">
+              <div class="pm-handles">
+                <!-- <div class="current-role">Software Developer</div> -->
+                <!-- <div class="current-location"> Vancouver, Canada  </div> -->
+                {{resume.basics.location.city}}, {{resume.basics.location.countryCode}}
+
+                {% if resume.basics.profiles %}
+                {% for profile in resume.basics.profiles %}
+                <div class="vr-separator"> | </div>
+                <a href="{{profile.url}}" target="_blank" rel="noopener noreferrer nofollow ugc" class="handle-link">
+                  {{profile.network | lower}}/{{profile.username}}
+                </a>
+                {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+            <!--               <div class="desc"> -->
+            <!-- Using Vim, I've escaped more modes than Houdini. My code is as clean as my escape strategy - efficient, sleek, and always surprising! -->
+            <!--               </div> -->
+          </header>
+          <div class="pdf-page-container page-container">
+            <div class="pdf-page-column page-container" />
+            {% if resume.work %}
+            <section class="section">
+              <div class="section-title">
+                <h2 class="section-heading">Work Experience</h2>
+                <div class="section-border"></div>
+              </div>
+
+              {% for job in resume.work %}
+              <div class="section-item">
+                <div class="section-item-header">
+                  <div class="title-container">
+                    <h2 class="title-main">{{job.position}}</h2>
+                  </div>
+                  <div class="subtitle-container">
+                    <div class="subtitle-main-container">
+                      {% if job.location %}
+                      <h3 class="subtitle-main">{{job.name}}<span class="location">, {{job.location}}</span> </h3>
+                      {%else%}
+                      <h3 class="subtitle-main">{{job.name}}</h3>
+                      {%endif%}
+                    </div>
+                    {% set start_parts = job.startDate | split(pat="-") %}
+                    {% set end_parts = job.endDate | split(pat="-") %}
+                    {% set start_month = start_parts[1] | int %}
+                    {% set end_month = end_parts[1] | int %}
+                    <div class="subtitle-meta"><span>{{ month_names[start_month] }} {{ start_parts[0] }} - {{
+                        month_names[end_month] }} {{ end_parts[0] }}</span></div>
+                  </div>
+                </div>
+                <div>
+                  <ul class="desc-list">
+                    {% for highlight in job.highlights %}
+                    <li class="desc-list-item">{{highlight}}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              {% endfor %}
+
+            </section>
+            {% endif %}
+
+            <!-- <div class="new-page"> -->
+            <!--   <h1 class="h1 mb-12">{{ section.extra.name }}</h1> -->
+
+            {% if resume.skills%}
+            <section class="section">
+              <div class="section-title">
+                <h2 class="section-heading">Skills</h2>
+                <div class="section-border"></div>
+              </div>
+              {% for skill in resume.skills %}
+              <div class="skill-item-header">
+                <div class="title-container">
+                  <h2 class="title-main ">{{skill.name}}: </h2>
+                </div>
+                <div class="subtitle-container">
+                  <div class="subtitle-main-container">
+                    <h3 class="subtitle-main skills-list">{{ skill.keywords | join(sep=", ") }}</h3>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </section>
+            {% endif %}
+
+            {% if resume.education %}
+            <section class="section">
+              <div class="section-title">
+                <h2 class="section-heading">Education</h2>
+                <div class="section-border"></div>
+              </div>
+              {% for degree in resume.education %}
+              <div class="section-item mb-12">
+                <div class="section-item-header mb-12 two-line">
+                  <div class="title-container">
+                    <h2 class="title-main ">{{degree.studyType}} of {{degree.area}}</h2>
+                  </div>
+                  <div class="subtitle-container two-line-item">
+                    <div class="subtitle-main-container fw-300">
+                      <h3 class="subtitle-main fw-300">{{degree.institution}}, {{degree.location}}</h3>
+                    </div>
+                    {% set start_parts = degree.startDate | split(pat="-") %}
+                    {% set end_parts = degree.endDate | split(pat="-") %}
+                    {% set start_month = start_parts[1] | int %}
+                    {% set end_month = end_parts[1] | int %}
+                    <div class="subtitle-meta"><span>{{ month_names[start_month] }} {{ start_parts[0] }} - {{
+                        month_names[end_month] }} {{ end_parts[0] }}</span></div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </section>
+            {% endif %}
+
+
+            <!-- <section class="section"> -->
+            <!--   <div class="section-title"> -->
+            <!--     <h2 class="section-heading">Projects</h2> -->
+            <!--     <div class="section-border"></div> -->
+            <!--   </div> -->
+            <!---->
+            <!--   <div class="section-item"> -->
+            <!--     <div class="section-item-header"> -->
+            <!--       <div class="title-container"> -->
+            <!--         <h2 class="title-main">Ardra - MEV Arbitrage Bot</h2> -->
+            <!--       </div> -->
+            <!--       <div class="subtitle-container"> -->
+            <!--         <div class="subtitle-main-container"> -->
+            <!--           <h3 class="subtitle-main"><a href="https://github.com/lakshya-sky/ardra-bot" target="_blank" -->
+            <!--               rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Link</a></h3> -->
+            <!--         </div> -->
+            <!--         <div class="subtitle-meta"><span>Ethereum, Solidity, DEX, Flashbots</span></div> -->
+            <!--       </div> -->
+            <!--     </div> -->
+            <!--     <div> -->
+            <!--       <ul class="desc-list"> -->
+            <!--         <li class="desc-list-item">Designed a real time event pipeline by streaming transactions and running -->
+            <!--           EVM simulations against the next block using actor style components, learning to avoid shared -->
+            <!--           locks so concurrency is easier to reason about and failures stay contained.</li> -->
+            <!--         <li class="desc-list-item">Built a cross exchange pricing and arbitrage engine for Uniswap V2, -->
+            <!--           Uniswap V3, and Curve using Rust, Ethers, SQLx, and Postgres, learning the block building flow -->
+            <!--           where relays, builders, and validators coordinate to move bundles from searchers into a block so -->
+            <!--           opportunities are evaluated in the right place and time.</li> -->
+            <!--       </ul> -->
+            <!--     </div> -->
+            <!--   </div> -->
+            <!---->
+            <!--   <div class="section-item"> -->
+            <!--     <div class="section-item-header"> -->
+            <!--       <div class="title-container"> -->
+            <!--         <h2 class="title-main">ZK-Mixer - Anonymous Coin Transfer</h2> -->
+            <!--       </div> -->
+            <!--       <div class="subtitle-container"> -->
+            <!--         <div class="subtitle-meta"><span>Rust, Blockchain, zkSNARK, Substrate</span></div> -->
+            <!--       </div> -->
+            <!--     </div> -->
+            <!--     <div> -->
+            <!--       <ul class="desc-list"> -->
+            <!--         <li class="desc-list-item">Implemented a Zero-Knowledge system to enable confidential coin transfers -->
+            <!--           while preserving user anonymity, effectively obfuscating transaction details. </li> -->
+            <!--         <li class="desc-list-item">This project provided valuable insights into complex cryptographic -->
+            <!--           concepts and data structures such as Merkle Trees and Vector Commitments.</li> -->
+            <!--       </ul> -->
+            <!--     </div> -->
+            <!--   </div> -->
+            <!---->
+            <!--   <div class="section-item"> -->
+            <!--     <div class="section-item-header"> -->
+            <!--       <div class="title-container"> -->
+            <!--         <h2 class="title-main">Rovo - Deep Learning Library</h2> -->
+            <!--       </div> -->
+            <!--       <div class="subtitle-container"> -->
+            <!--         <div class="subtitle-main-container"> -->
+            <!--           <h3 class="subtitle-main"><a href="https://github.com/lakshya-sky/rovo" target="_blank" -->
+            <!--               rel="noopener noreferrer nofollow ugc" class="css-1wafmg3">Link</a></h3> -->
+            <!--         </div> -->
+            <!--         <div class="subtitle-meta"><span>Rust, PyTorch, Data Structures, Algorithms</span></div> -->
+            <!--       </div> -->
+            <!--     </div> -->
+            <!--     <div> -->
+            <!--       <ul class="desc-list"> -->
+            <!--         <li class="desc-list-item">Replicated PyTorch tensor processing by studying the C++ codebase and -->
+            <!--           designing memory-safe DAG concurrency, improving safety.</li> -->
+            <!--         <li class="desc-list-item">Translated core structures to Rust by redesigning APIs to match ownership -->
+            <!--           rules, reducing runtime risk.</li> -->
+            <!--       </ul> -->
+            <!--     </div> -->
+            <!--   </div> -->
+            <!-- </section> -->
+            <!-- </div> -->
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 +++
 title = "Resume"
-template = "resume-page.html"
+template = "resume.html"
 
 [extra]
 name = "Darshan Kathiriya"

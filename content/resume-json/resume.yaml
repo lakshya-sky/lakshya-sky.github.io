@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jsonresume/resume-schema/refs/heads/master/schema.json
+$schema: https://raw.githubusercontent.com/jsonresume/resume-schema/refs/heads/master/schema.json
+basics:
+  name: Darshan Kathiriya
+  location:
+    city: Ottawa
+    countryCode: CA
+  profiles:
+    - network: GitHub
+      username: lakshya-sky
+      url: https://github.com/lakshya-sky
+    - network: LinkedIn
+      username: dkathiriya
+      url: https://www.linkedin.com/in/dkathiriya/
+work:
+  - name: Webisoft
+    location: Montreal
+    position: Software Engineer
+    startDate: 2022-09
+    endDate: 2025-11
+    highlights:
+      # - Engineered a decentralized poker platform using Zero-Knowledge Proofs and WASM to enable trustless, serverless gameplay, eliminating the need for a central authority and ensuring game integrity.
+      # - Built distributed background services to track asynchronous cross-chain deposits, ensuring 100% accuracy in financial reconciliation and real-time merchant reporting.
+      - Led scope and design of a multi-chain gateway with 3 engineers, supporting 8 blockchains generating $1M+ monthly volume.
+      - Engineered distributed transaction signing using AWS Nitro Enclaves and KMS to eliminate single points of compromise and to ensure institutional-grade security.
+      - Developed a fault-tolerant state recovery system that regenerates live game sessions from blockchain data, maintaining a seamless user experience during network interruptions or browser reloads.
+      - Optimized smart contract interactions and gas consumption by designing efficient data structures in Solidity and CosmWasm, reducing transaction costs for end-users and increasing platform adoption.
+  - name: allNovascotia
+    location: Halifax
+    position: Full Stack Developer
+    startDate: 2021-03
+    endDate: 2022-09
+    highlights:
+      - Fixed breaking-news traffic outages by correcting a PHP session bug that unnecessarily created Postgres session rows, removing per-request session-table read/write contention and handling spike traffic without backend stalls.
+      - Collaborated with journalists to build a CMS crash-recovery system using draft caching, eliminating data loss and streamlining migration from PHP to Next.js with zero downtime.
+      - Automated subscription billing by rebuilding the payment backend to charge cards on customer join dates, integrating compliant, non-interactive processing to eliminate monthly batch uploads and manual outreach while improving on-time collections.
+  - name: YQG Technologies Inc
+    location: Windsor
+    position: Full Stack Developer
+    startDate: 2020-09
+    endDate: 2021-02
+    highlights:
+      - Shipped a telehealth video-calling MVP by integrating Amazon Chime SDK into a React client and building AWS Lambda + DynamoDB meeting/orchestration APIs with appointment-based auth, validating UX and technical feasibility.
+      - Helped roll out the Node.js backend to an AWS serverless stack (Lambda, API Gateway, DynamoDB) to improve scalability and reduce operational overhead.
+  - name: Aarvi Technology
+    position: Software Developer
+    startDate: 2018-06
+    endDate: 2019-07
+    highlights:
+      - Implemented a Jenkins-based CI/CD pipeline integrated with GitHub to standardize builds and deployments, improving release consistency and developer workflow.
+      - Coordinated closely with QA to triage, fix, and verify critical issues before launch, improving production readiness.
+      - Worked with real estate agencies to refine workflows and product requirements for a residency management system, improving platform usability and lead-generation outcomes.
+  - name: Narola Infotech
+    position: Software Developer Intern
+    startDate: 2017-12
+    endDate: 2018-05
+    highlights:
+      - Migrated from PHP server-side rendering to a REST API for web and mobile applications.
+      - Integrated payment and delivery services into the Textile ERP using third-party APIs, improving order completion and fulfillment flow.
+education:
+  - institution: Dalhousie University
+    location: Halifax
+    area: Applied Computer Science
+    studyType: Master
+    startDate: 2019-09
+    endDate: 2020-12
+  - institution: Dharmsinh Desai University
+    location: India
+    area: Information Technology
+    studyType: Bachelor of Technology
+    startDate: 2014-08
+    endDate: 2018-05
+skills:
+  - name: Development
+    keywords:
+      - Typescript
+      - Rust
+      - Node.js
+      - React.js
+      - Next.js
+      - GraphQL
+  - name: DevOps
+    keywords:
+      - Kubernetes
+      - Helm
+      - Docker
+      - Terraform
+      - Google Cloud
+      - AWS

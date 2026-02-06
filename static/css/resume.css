@@ -42,6 +42,10 @@
   margin-bottom: var(--10px) !important;
 }
 
+.fw-300 {
+  font-weight: 300 !important;
+}
+
 .fw-400 {
   font-weight: 400 !important;
 }
@@ -199,7 +203,7 @@ body {
   width: 100%;
   padding-right: 0;
   font-size: var(--18px);
-  font-weight: 400;
+  font-weight: 300;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -341,6 +345,7 @@ body {
 .skill-item-header {
   margin: 0;
   min-width: 0;
+  margin-bottom: var(--8px) !important;
   display: flex;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
