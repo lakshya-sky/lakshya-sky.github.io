@@ -22,16 +22,13 @@ contract NoFlush1 {
   192,  180,  35, 35, 36, 11, 167,  179,
   23, 12, 169,  2468, 181,  24, 168,  2479,
   2600, 180,  191,  193,  192,  35, 36, 13,
-  169,  203,  181,  25, 169,  203,  204,  181,
-  203,  205,  204,  193,  193,  37, 47, 47,
-  47, 48, 47, 47, 48, 47, 48, 49,
-  11, 167,  23, 11, 167,  179,  23, 12,
   ....
   ];
 }
 ```
 
 We assign numbers between 0 to 52 to a poker card and then use `evaluate` function to get a rank, whichever hand has a lower rank is the winning hand. The below `evaluate` method uses 17 `NoFlush` tables of roughly 3000-elements each.
+
 ```solidity,name=https://github.com/dxganta/poker-solidity/blob/main/contracts/Evaluator7.sol,linenos,hl_lines=28 30
 ...
 import {NoFlush1} from "./noFlush/NoFlush1.sol";
@@ -63,15 +60,18 @@ contract Evaluator7 {
             return NoFlush1(NOFLUSH_ADDRESSES[0]).noflush(hsh);
         } else if (hsh < 6000 ) {
             return NoFlush2(NOFLUSH_ADDRESSES[1]).noflush(hsh);
-        } 
+        }
         ...
     }
 }
 ```
 
-Now let's see how we can deploy these lookup tables 
+Now let's see how we can deploy these lookup tables
 
-#### V1
+### V1
+
+In my first attempt I tried to deploy one of the lookup tables as it is without modifications, with just an array of 3000 elements.
+
 ```solidity,name=https://github.com/dxganta/poker-solidity/blob/main/contracts/noFlush/NoFlush1.sol
 contract NoFlush1 {
   uint[3000] public noflush = [
@@ -82,16 +82,12 @@ contract NoFlush1 {
   192,  180,  35, 35, 36, 11, 167,  179,
   23, 12, 169,  2468, 181,  24, 168,  2479,
   2600, 180,  191,  193,  192,  35, 36, 13,
-  169,  203,  181,  25, 169,  203,  204,  181,
-  203,  205,  204,  193,  193,  37, 47, 47,
-  47, 48, 47, 47, 48, 47, 48, 49,
-  11, 167,  23, 11, 167,  179,  23, 12,
   ....
   ];
 }
 ```
 
-Even though these are smaller, at 3000 elements, they were still too big to deploy in a single transaction. A deployment simulation using Foundry costs `66744705` (~66M) gas.
+A deployment simulation using Foundry costs `66744705` (~66M) gas.
 
 ```shell,hl_lines=6
 ❯ forge script script/NoFlushDeployV1.s.sol:NoFlushDeploy -vvvv
@@ -106,11 +102,13 @@ Traces:
     └─ ← [Stop]
 ```
 
-This makes it impossible to deploy, since the current maximum block gas limit is `30M`. ![](screenshot-20241220-125503.png)
+This makes it impossible to deploy, since the current maximum block gas limit is `30M`. Even though the array was small compared to the original python implementation, at 3000 elements, it is still too big to deploy in a single transaction.
 
-One thing we can do is take the table content out of the contract and initialize it using subsequent transactions, which brings us to V2.
+![Block Gas Limit of 30M](screenshot-20241220-125503.png)
 
-#### V2
+One thing we can do is to take the table content out of the contract and initialize it using subsequent transactions, which brings us to V2.
+
+### V2
 
 Entirely remove the table and try to initialize the content with `append` in chunks of 1000 elements.
 
@@ -169,7 +167,7 @@ contract NoFlushDeploy is Script {
 
 The deploy script uses 69M gas across four transactions.
 
-```shell,hl_lines=7 9 11 13
+```shell,hl_lines=7 9 11 13,linenos
 ❯ forge script script/NoFlushDeployV2.s.sol:NoFlushDeploy -vvvv
 No files changed, compilation skipped
 Traces:
@@ -205,18 +203,18 @@ Script ran successfully.
 Gas used: 69948422
 ```
 
-Given current gas prices of 3.751 Gwei per gas, it would cost us `0.26239972 ETH`. ![](pasted-image-20241220131926.png)
-With this approach, we are able to deploy the contract and retrieve the elements for lookup, but we are paying a high price for a very simple contract. Not to mention, we have a total of [**11**](https://github.com/dxganta/poker-solidity/tree/main/contracts/noFlush) contracts to deploy just to match NoFlush hands. That would be well above 2 ETH in total.
+Given current gas prices of 3.751 Gwei per gas, it would cost us `0.26239972 ETH`. 
 
-But if we look closer at the argument passed to the `append` function, we can see that it has a lot of zeros. Every zero byte in the calldata costs 4 gas (see [Gas Costs](https://www.evm.codes/about#gascosts)) before execution even begins.
+![Current Gas price of 3.751 Gwei](pasted-image-20241220131926.png)
 
-When analyzing the lookup table, I noticed each number can fit in `uint16` instead of `uint256`, so we only need two bytes per element. For every element, we are overpaying `4 * 30 = 120` gas (4 * number of bytes unused, which is 32-2), for a total of `120000` gas per `1000`-element chunk.
+With this approach, we are able to deploy the contract and retrieve the elements for lookup, but we are paying a high price for a very simple contract. Not to mention, we have a total of [**17**](https://github.com/dxganta/poker-solidity/tree/main/contracts/noFlush) contracts to deploy just to match NoFlush hands. That would be well above 3 ETH in total.
 
-But there is no actual `uint16` in the EVM, and it will be converted to `uint256`, which results in too many padded zeros. If we can convert each 1000-element chunk to a compact hex string that uses only 2 bytes instead of 32 bytes, then in `append` we can convert them back to `uint256`.
+But if we look closer at the argument passed to the `append` function (lines 9, 11, and 13 in the last forge script output), we can see that it has a lot of zeros. Because each number can fit in `uint16` it only requires two bytes per number. However, there is no actual `uint16` type in the EVM, and it will be converted to `uint256`, which results in too many padded zeros. Every zero byte in the calldata costs 4 gas (see [Gas Costs](https://www.evm.codes/about#gascosts)) before execution even begins.
+For every member of the array, we are overpaying `4 * 30 = 120` gas (4 \* number of bytes unused, which is 32-2), for a total of `120000` gas per `1000`-element chunk.
 
-Takeaway: calldata padding is the main cost driver here, so packing bytes should cut a large chunk of gas.
+What if we can convert each 1000-element chunk to a compact hex string that uses only 2 bytes instead of 32 bytes, and whether it reduces gas.
 
-#### V3
+### V3
 
 V3 uses a similar approach to V2, but it packs the elements, using only 2 bytes of calldata per element, and stores them in the `noflush` array using assembly for further gas reduction.
 
@@ -342,7 +340,7 @@ Script ran successfully.
 Gas used: 70016028
 ```
 
-#### V4
+### V4
 
 V4 tries an entirely new approach. A hex string of 3000 `uint16` elements would need 6000 bytes (~6 KB). Since the contract size limit is 24 KB, what if we put the 6 KB string in the code itself? That way, we don't need to store the array in a storage slot, and when reading the element for a given index we can just find the value in the runtime code. You can read about creation and runtime code in [this](https://ethereum.stackexchange.com/questions/76334/what-is-the-difference-between-bytecode-init-code-deployed-bytecode-creation) wonderful Stack Exchange thread. Solidity provides `codesize` and `codecopy` opcodes to access the smart contract's code itself. Our approach here is:
 
@@ -404,8 +402,8 @@ contract NoFlushDeploy is Script {
         // NOTE: `create` expects initcode, not runtime. So we build a tiny initcode
         // that CODECOPYs the embedded payload into memory and RETURNs it.
         bytes memory payload = bytes.concat(
-            type(NoFlush1).runtimeCode, 
-            arr, 
+            type(NoFlush1).runtimeCode,
+            arr,
             abi.encode(uint256(arr.length))
         );
         uint256 payloadLen = payload.length;
@@ -489,9 +487,9 @@ Script ran successfully.
 Gas used: 1779007
 ```
 
-#### V5
+### V5
 
-With V5, we use Huff [Code Tables](https://docs.huff.sh/get-started/huff-by-example/#code-tables) to further reduce gas. Huff is a low-level language that allows us to access the EVM stack using bytecodes, giving us total control. The idea is similar to V4, but more visible and elegant, since all the hairy stuff for creating `initCode` from `runtimeCode` is handled by [foundry-huff](https://github.com/huff-language/foundry-huff). 
+With V5, we use Huff [Code Tables](https://docs.huff.sh/get-started/huff-by-example/#code-tables) to further reduce gas. Huff is a low-level language that allows us to access the EVM stack using bytecodes, giving us total control. The idea is similar to V4, but more visible and elegant, since all the hairy stuff for creating `initCode` from `runtimeCode` is handled by [foundry-huff](https://github.com/huff-language/foundry-huff).
 
 ```asm,name=src/huff/NoFlush1.huff
 /* Interface */
