@@ -8,7 +8,68 @@ tags = ["solidity", "huff", "evm", "blockchain", "ethereum"]
 [extra]
 code_block_name_links = true
 +++
-A lookup table is a way to evaluate a poker hand using the algorithm defined in [PokerHandEvaluator](https://github.com/HenryRLee/PokerHandEvaluator/blob/develop/Documentation/Algorithm.md). The table itself is an array of [thousands of numbers](https://github.com/thlorenz/phe/blob/master/lib/hashtable7.js). Luckily [dxganta](https://github.com/dxganta/poker-solidity) has split these tables into smaller arrays that we can use in Solidity. 
+
+A lookup table is a way to evaluate a poker hand using the algorithm defined in [PokerHandEvaluator](https://github.com/HenryRLee/PokerHandEvaluator/blob/develop/Documentation/Algorithm.md). The table itself is an array of [thousands of numbers](https://github.com/thlorenz/phe/blob/master/lib/hashtable7.js). Luckily [dxganta](https://github.com/dxganta/poker-solidity) has split these tables into smaller arrays that we can use in Solidity. Below is how a lookup table is initialized in Solidity.
+
+```solidity,name=https://github.com/dxganta/poker-solidity/blob/main/contracts/noFlush/NoFlush1.sol
+contract NoFlush1 {
+    /* This will be used by Evaluator7 in the next code snippet on line 28*/
+  uint[3000] public noflush = [
+  11, 23, 11, 167,  23, 11, 167,  179,
+  23, 12, 168,  191,  180,  24, 35, 35,
+  35, 36, 11, 167,  23, 11, 167,  179,
+  23, 12, 168,  2468, 180,  24, 168,  191,
+  192,  180,  35, 35, 36, 11, 167,  179,
+  23, 12, 169,  2468, 181,  24, 168,  2479,
+  2600, 180,  191,  193,  192,  35, 36, 13,
+  169,  203,  181,  25, 169,  203,  204,  181,
+  203,  205,  204,  193,  193,  37, 47, 47,
+  47, 48, 47, 47, 48, 47, 48, 49,
+  11, 167,  23, 11, 167,  179,  23, 12,
+  ....
+  ];
+}
+```
+
+We assign numbers between 0 to 52 to a poker card and then use `evaluate` function to get a rank, whichever hand has a lower rank is the winning hand. The below `evaluate` method uses 17 `NoFlush` tables of roughly 3000-elements each.
+```solidity,name=https://github.com/dxganta/poker-solidity/blob/main/contracts/Evaluator7.sol,linenos,hl_lines=28 30
+...
+import {NoFlush1} from "./noFlush/NoFlush1.sol";
+...
+
+contract Evaluator7 {
+    ...
+    function handRank(uint a, uint b, uint c, uint d, uint e, uint f, uint g) public view returns (uint8) {
+        uint val = evaluate(a,b,c,d,e,f,g);
+
+        if (val > 6185) return HIGH_CARD;        // 1277 high card
+        if (val > 3325) return ONE_PAIR;        // 2860 one pair
+        if (val > 2467) return TWO_PAIR;         //  858 two pair
+        if (val > 1609) return THREE_OF_A_KIND;  //  858 three-kind
+        if (val > 1599) return STRAIGHT;         //   10 straights
+        if (val > 322)  return FLUSH;            // 1277 flushes
+        if (val > 166)  return FULL_HOUSE;       //  156 full house
+        if (val > 10)   return FOUR_OF_A_KIND;   //  156 four-kind
+        return STRAIGHT_FLUSH;                   //   10 straight-flushes
+    }
+
+    function evaluate(uint a, uint b, uint c , uint d, uint e, uint f, uint g) public view returns (uint) {
+        ...
+
+        hsh = hash_quinary(quinary, 13, 7);
+
+        if (hsh < 3000) {
+            /* Here we do a lookup from the table */
+            return NoFlush1(NOFLUSH_ADDRESSES[0]).noflush(hsh);
+        } else if (hsh < 6000 ) {
+            return NoFlush2(NOFLUSH_ADDRESSES[1]).noflush(hsh);
+        } 
+        ...
+    }
+}
+```
+
+Now let's see how we can deploy these lookup tables 
 
 #### V1
 ```solidity,name=https://github.com/dxganta/poker-solidity/blob/main/contracts/noFlush/NoFlush1.sol
@@ -32,7 +93,7 @@ contract NoFlush1 {
 
 Even though these are smaller, at 3000 elements, they were still too big to deploy in a single transaction. A deployment simulation using Foundry costs `66744705` (~66M) gas.
 
-```shell
+```shell,hl_lines=6
 ❯ forge script script/NoFlushDeployV1.s.sol:NoFlushDeploy -vvvv
 Traces:
   [66744705] NoFlushDeploy::run()
@@ -108,7 +169,7 @@ contract NoFlushDeploy is Script {
 
 The deploy script uses 69M gas across four transactions.
 
-```shell
+```shell,hl_lines=7 9 11 13
 ❯ forge script script/NoFlushDeployV2.s.sol:NoFlushDeploy -vvvv
 No files changed, compilation skipped
 Traces:
@@ -246,7 +307,7 @@ contract NoFlush1 {
 
 Gas reporting from the deploy script shows that it didn't make much difference.
 
-```shell
+```shell,hl_lines=6 8 10 12
 ❯ forge script script/NoFlushDeployV3.s.sol:NoFlushDeploy -vvvv
 Traces:
   [69994964] NoFlushDeploy::run()
@@ -295,7 +356,7 @@ V4 tries an entirely new approach. A hex string of 3000 `uint16` elements would 
 contract NoFlush1 {
     // The packed uint16 table is appended to this contract's *runtime bytecode* as:
     // [ ...runtime code... ][ table bytes ][ uint256(tableLen) ]
-    function lookup(uint256) external pure returns (uint256) {
+    function noflush(uint256) external pure returns (uint256) {
         assembly {
             // Load index from calldata.
             let i := calldataload(0x04)
@@ -390,16 +451,16 @@ contract NoFlushDeploy is Script {
 
         vm.stopBroadcast();
 
-        vm.assertEq(noFlush1.lookup(999), 2614);
-        vm.assertEq(noFlush1.lookup(1999), 1612);
-        vm.assertEq(noFlush1.lookup(2999), 2073);
+        vm.assertEq(noFlush1.noflush(999), 2614);
+        vm.assertEq(noFlush1.noflush(1999), 1612);
+        vm.assertEq(noFlush1.noflush(2999), 2073);
     }
 }
 ```
 
 Deploying it would cost us `1779007` gas, which is way lower than the 30M gas limit. Voila.
 
-```shell
+```shell,hl_lines=6 10
 ❯ forge script script/NoFlushDeployV4.s.sol:NoFlushDeploy -vvvv
 Traces:
   [1757943] NoFlushDeploy::run()
@@ -409,15 +470,15 @@ Traces:
     │   └─ ← [Return] 6384 bytes of code
     ├─ [0] VM::stopBroadcast()
     │   └─ ← [Return]
-    ├─ [536] 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496::lookup(999) [staticcall]
+    ├─ [536] 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496::noflush(999) [staticcall]
     │   └─ ← [Return] 2614
     ├─ [0] VM::assertEq(2614, 2614) [staticcall]
     │   └─ ← [Return]
-    ├─ [536] 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496::lookup(1999) [staticcall]
+    ├─ [536] 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496::noflush(1999) [staticcall]
     │   └─ ← [Return] 1612
     ├─ [0] VM::assertEq(1612, 1612) [staticcall]
     │   └─ ← [Return]
-    ├─ [536] 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496::lookup(2999) [staticcall]
+    ├─ [536] 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496::noflush(2999) [staticcall]
     │   └─ ← [Return] 2073
     ├─ [0] VM::assertEq(2073, 2073) [staticcall]
     │   └─ ← [Return]
@@ -434,7 +495,7 @@ With V5, we use Huff [Code Tables](https://docs.huff.sh/get-started/huff-by-exam
 
 ```asm,name=src/huff/NoFlush1.huff
 /* Interface */
-#define function lookup(uint256) view returns (uint256)
+#define function noflush(uint256) view returns (uint256)
 
 #define table CODE_TABLE {
   0x000B0017000B00A70017000B00A700B30017000C00A800BF00B400180023002300.....
@@ -495,7 +556,7 @@ import {Script, console} from "forge-std/Script.sol";
 import {HuffDeployer} from "foundry-huff/HuffDeployer.sol";
 
 interface ILookup {
-    function lookup(uint256) view external returns (uint256);
+    function noflush(uint256) view external returns (uint256);
 }
 contract NoFlushDeploy is Script {
     function setUp() public {}
@@ -504,16 +565,16 @@ contract NoFlushDeploy is Script {
         address nf1 = HuffDeployer.deploy("huff/NoFlush1");
         ILookup huff_nf1 = ILookup(nf1);
 
-        vm.assertEq(huff_nf1.lookup(999), 2614);
-        vm.assertEq(huff_nf1.lookup(1999), 1612);
-        vm.assertEq(huff_nf1.lookup(2999), 2073);
+        vm.assertEq(huff_nf1.noflush(999), 2614);
+        vm.assertEq(huff_nf1.noflush(1999), 1612);
+        vm.assertEq(huff_nf1.noflush(2999), 2073);
     }
 }
 ```
 
 When we run the deploy script, foundry-huff does some prerequisite steps to deploy the Huff code. Our concern is the deployment cost of the contract, which is `1218033` gas, and calling the `lookup` method, which costs `171` gas per call.
 
-```shell
+```shell,hl_lines=8 11
 ❯ forge script script/NoFlushDeployV5.s.sol:NoFlushDeploy -vvvv
 Traces:
   [4718120] NoFlushDeploy::run()
@@ -524,15 +585,15 @@ Traces:
     │   ├─ [1218033] → new <unknown>@0xd9003177dC465aAA89e20678675dca7FA5f5CAD5
     │   │   └─ ← [Return] 6084 bytes of code
     │   └─ ← [Return] 0xd9003177dC465aAA89e20678675dca7FA5f5CAD5
-    ├─ [171] 0xd9003177dC465aAA89e20678675dca7FA5f5CAD5::lookup(999) [staticcall]
+    ├─ [171] 0xd9003177dC465aAA89e20678675dca7FA5f5CAD5::noflush(999) [staticcall]
     │   └─ ← [Return] 2614
     ├─ [0] VM::assertEq(2614, 2614) [staticcall]
     │   └─ ← [Return]
-    ├─ [174] 0xd9003177dC465aAA89e20678675dca7FA5f5CAD5::lookup(1999) [staticcall]
+    ├─ [174] 0xd9003177dC465aAA89e20678675dca7FA5f5CAD5::noflush(1999) [staticcall]
     │   └─ ← [Return] 1612
     ├─ [0] VM::assertEq(1612, 1612) [staticcall]
     │   └─ ← [Return]
-    ├─ [180] 0xd9003177dC465aAA89e20678675dca7FA5f5CAD5::lookup(2999) [staticcall]
+    ├─ [180] 0xd9003177dC465aAA89e20678675dca7FA5f5CAD5::noflush(2999) [staticcall]
     │   └─ ← [Return] 2073
     ├─ [0] VM::assertEq(2073, 2073) [staticcall]
     │   └─ ← [Return]
