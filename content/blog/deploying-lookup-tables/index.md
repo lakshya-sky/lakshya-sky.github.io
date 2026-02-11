@@ -9,6 +9,8 @@ tags = ["solidity", "huff", "evm", "blockchain", "ethereum"]
 code_block_name_links = true
 +++
 
+> [TL;DR] How I deployed a Smart contract which costed `>60M` gas initially to `120k` gas with Huff. 
+
 A lookup table is a way to evaluate a poker hand using the algorithm defined in [PokerHandEvaluator](https://github.com/HenryRLee/PokerHandEvaluator/blob/develop/Documentation/Algorithm.md). The table itself is an array of [thousands of numbers](https://github.com/thlorenz/phe/blob/master/lib/hashtable7.js). Luckily [dxganta](https://github.com/dxganta/poker-solidity) has split these tables into smaller arrays that we can use in Solidity. Below is how a lookup table is initialized in Solidity.
 
 ```solidity,name=https://github.com/dxganta/poker-solidity/blob/main/contracts/noFlush/NoFlush1.sol
